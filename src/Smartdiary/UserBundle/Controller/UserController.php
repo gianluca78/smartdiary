@@ -31,7 +31,11 @@ class UserController extends Controller
     public function newAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm('user', $user);
+        $form = $this->createForm('user', $user, array(
+            'action' => $this->generateUrl('smartdiary_user_user_new'),
+            'attr' => array('data-ajax' => 'false')
+            )
+        );
 
         $formHandler = $this->get('smartdiary_user.create_account_form_handler');
 

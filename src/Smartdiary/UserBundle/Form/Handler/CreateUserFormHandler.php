@@ -3,7 +3,8 @@ namespace Smartdiary\UserBundle\Form\Handler;
 
 use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\Form\FormInterface,
-    Symfony\Component\Security\Core\Encoder\EncoderFactory;
+    Symfony\Component\Security\Core\Encoder\EncoderFactory,
+    Symfony\Component\HttpFoundation\Session\Session;
 
 use Doctrine\ORM\EntityManager;
 
@@ -14,10 +15,15 @@ class CreateUserFormHandler {
     private $entityManager;
     private $encoderFactory;
 
-    public function __construct(EntityManager $entityManager, EncoderFactory $encoderFactory)
+    public function __construct(
+        EntityManager $entityManager,
+        EncoderFactory $encoderFactory,
+        Session $session
+    )
     {
         $this->entityManager = $entityManager;
         $this->encoderFactory = $encoderFactory;
+        $this->session = $session;
     }
 
     public function handle(FormInterface $form, Request $request)
@@ -45,5 +51,7 @@ class CreateUserFormHandler {
         $user->setPassword($password);
         $this->entityManager->persist($user);
         $this->entityManager->flush();
+
+        $this->session->getFlashBag()->add('success', 'L\'utente è stato creato con successo');
     }
 } 

@@ -1,0 +1,11 @@
+.description {
+    background: none repeat scroll 0px 0px white;
+    margin: 0px 0px 25px;
+    padding: 12px 22px 12px 10px;
+}
+
+.flash-success {
+    background: none repeat scroll 0px 0px greenyellow;
+    margin: 0px 0px 25px;
+    padding: 12px 22px 12px 10px;
+}

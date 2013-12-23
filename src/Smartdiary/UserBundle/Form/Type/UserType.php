@@ -9,7 +9,9 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username')
+        $builder->setAction($options['action'])
+            ->add('username')
+            ->add('email')
             ->add('password', 'repeated', array(
                 'type' => 'password',
                 'invalid_message' => 'I campi della password non coincidono',

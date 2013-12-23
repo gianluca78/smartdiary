@@ -54,6 +54,13 @@ class User implements UserInterface, \Serializable {
     private $password;
 
     /**
+     * @var string $email
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $email;
+
+    /**
      * @var int $roleId
      *
      * @ORM\Column(name="role_id", type="integer", nullable=false)
@@ -125,6 +132,14 @@ class User implements UserInterface, \Serializable {
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
@@ -202,6 +217,14 @@ class User implements UserInterface, \Serializable {
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
     /**

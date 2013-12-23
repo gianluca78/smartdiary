@@ -1,0 +1,66 @@
+{% block button_row %}
+    <div data-role="collapsible">
+        <h4>Trattamento dei dati personali e sensibili</h4>
+        <p>Con la registrazione al servizio SMART Diary, il sottoscritto
+            acconsente a che i dati forniti dall'utente siano registrati su
+            database elettronici e materiale cartaceo presso l'istituto del C.N.R. I.T.D. con sede in Palermo,
+            via Ugo La Malfa n. 153, che ne sarà titolare per il trattamento.</p>
+
+        <p>I dati personali dell'utente potranno essere utilizzati dal C.N.R. I.T.D nel
+            rispetto dei principi di protezione della privacy stabiliti dal Decreto Legislativo
+            n. 186 del 30 giugno 2003 e dalle altre norme vigenti in materia.</p>
+
+        <p>I dati personali degli utenti potranno essere sottoposti a tutte le operazioni di trattamento individuate dal D.
+            Lgs 196/2003 ovvero,
+            alla raccolta, registrazione, organizzazione, conservazione, elaborazione, selezione,
+            utilizzo ed ogni altra operazione utile ai fini scientifici. Tali dati potranno anche
+            essere organizzati in banche dati o archivi.</p>
+
+        <p>L'Utente potrà accedere ai propri dati in qualsiasi momento ed esercitare i diritti di cui alt'art. 7, D. Lgs
+            196/2003. L'utente ha diritto di ottenere:</p>
+        <ul>
+            <li>la conferma dell'esistenza o meno di dati personali che lo riguardano;</li>
+            <li>l'indicazione:
+                <ol>
+                    <li>dell'origine dei dati personali;</li>
+                    <li>delle finalità e modalità del trattamento;</li>
+                    <li>della logica applicata nel trattamento effettuato con l'ausilio di strumenti elettronici;</li>
+                    <li>degli estremi identificativi del titolare, dei responsabili e del rappresentante legale designato ai
+                        sensi dell'articolo 5, comma 2;
+                    </li>
+                    <li>dei soggetti o delle categorie di soggetti ai quali i dati personali possono essere comunicati.</li>
+                </ol>
+            </li>
+        </ul>
+
+        L'utente ha diritto di ottenere:
+
+        <ol>
+            <li>l'aggiornamento, la rettifica ovvero, quando vi ha interesse, l'integrazione dei dati;</li>
+            <li>la cancellazione, la trasformazione in forma anonima o il blocco dei dati trattati in
+                violazione di legge, compresi quelli di cui non è necessaria la conservazione in relazione
+                agli scopi per i quali i dati sono stati raccolti o successivamente trattati;
+            </li>
+            <li>l'attestazione che le operazioni di cui ai punti 1 e 2 sono state portate a conoscenza,
+                anche per quanto riguarda il loro contenuto, di coloro ai quali i dati sono stati
+                comunicati o diffusi, eccettuato il caso in cui tale adempimento si rivela impossibile o
+                comporta un impiego di mezzi manifestamente sproporzionato rispetto al diritto tutelato.
+            </li>
+        </ol>
+
+        <p>L'utente ha diritto di opporsi, in tutto o in parte per motivi legittimi al trattamento dei dati
+            personali che lo riguardano, ancorché pertinenti allo scopo della raccolta.</p>
+
+        <p>L'utente, inoltre, avrà sempre diretto accesso ai propri dati, in possesso del C.N.R. I.T.D.
+            L'utente in questo modo potrà integrare, modificare o cancellare i dati, in qualsiasi momento
+            e sotto la propria responsabilità.
+        </p>
+
+
+    </div>
+    {% spaceless %}
+        <div>
+            {{ form_widget(form) }}
+        </div>
+    {% endspaceless %}
+{% endblock button_row %}

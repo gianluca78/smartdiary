@@ -24,3 +24,16 @@ Smartdiary\UserBundle\Entity\User:
                 max: 40
                 minMessage: "La password deve contenere almeno {{ limit }} caratteri."
                 maxMessage: "La password non può superare {{ limit }} caratteri."
+        email:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "La password deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "La password non può superare {{ limit }} caratteri."
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+                checkMX: true

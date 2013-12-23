@@ -1,9 +1,19 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}
-    Registrazione utente
-{% endblock %}
+{% form_theme form 'SmartdiaryUserBundle:Form:button_row.html.twig' %}
+
+{% block title %}Smartdiary - Registrazione utente{% endblock %}
+{% block page_title %}Registrazione utente{% endblock %}
 
 {% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="description">
+    I campi contrassegnati da un * sono obbligatori.
+    </div>
     {{ form(form) }}
 {% endblock %}
