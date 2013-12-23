@@ -1,0 +1,3 @@
+SmartdiaryUserBundle_UserController:
+    resource: "@SmartdiaryUserBundle/Controller/UserController.php"
+    type: annotation

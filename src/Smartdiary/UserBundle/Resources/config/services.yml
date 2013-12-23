@@ -1,0 +1,11 @@
+parameters:
+
+services:
+    smartdiary_user.create_account_form_handler:
+        class: Smartdiary\UserBundle\Form\Handler\CreateUserFormHandler
+        arguments: [@doctrine.orm.entity_manager, @security.encoder_factory]
+
+    smartdiary_user.form.type.user:
+        class: Smartdiary\UserBundle\Form\Type\UserType
+        tags:
+            - { name: form.type, alias: user }

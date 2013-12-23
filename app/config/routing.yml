@@ -1,0 +1,10 @@
+_login:
+    path:   /login
+    defaults:  { _controller: SmartdiarySecurityBundle:Security:login }
+_logout:
+    path: /logout
+_security_check:
+    path:   /security_check
+
+SmartdiaryUserBundle:
+    resource: "@SmartdiaryUserBundle/Resources/config/routing.yml"

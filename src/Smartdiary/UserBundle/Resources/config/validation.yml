@@ -1,0 +1,26 @@
+Smartdiary\UserBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            message: "Lo username è già utilizzato"
+            fields: username
+    properties:
+        username:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Lo username deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Lo username non può superare {{ limit }} caratteri."
+        password:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 6
+                max: 40
+                minMessage: "La password deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "La password non può superare {{ limit }} caratteri."
