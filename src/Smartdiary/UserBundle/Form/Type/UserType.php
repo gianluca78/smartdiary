@@ -10,6 +10,25 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->setAction($options['action'])
+            ->add('name', null, array(
+                'label' => 'Nome'
+            ))
+            ->add('surname', null, array(
+                'label' => 'Cognome'
+            ))
+            ->add('sex', 'choice', array(
+                'choices' => array(
+                    0 => 'Maschio',
+                    1 => 'Femmina'
+                ),
+                'label' => 'Sesso'
+            ))
+            ->add('birth_date', null, array(
+                'label' => 'Data di nascita',
+                'attr' => array(
+                    'data-role' => 'date'
+                )
+            ))
             ->add('username')
             ->add('email')
             ->add('password', 'repeated', array(
@@ -27,6 +46,13 @@ class UserType extends AbstractType
                             ->orderBy('u.description', 'ASC');
                     },
                 'label' => 'Ruolo'
+            ))
+            ->add('teacher_email', null, array(
+                'label' => 'Email del docente',
+                'required' => false
+            ))
+            ->add('school', null, array(
+                'label' => 'Scuola'
             ))
             ->add('Salva', 'submit');
     }

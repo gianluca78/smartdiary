@@ -1,9 +1,52 @@
 Smartdiary\UserBundle\Entity\User:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            message: "Lo username è già utilizzato"
+            message: "Username o email è già utilizzati"
             fields: username
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            message: "Username o email è già utilizzati"
+            fields: email
+        - Callback: [hasTeacherEmail]
     properties:
+        name:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il nome deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il nome non può superare {{ limit }} caratteri."
+        surname:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il cognome deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il cognome non può superare {{ limit }} caratteri."
+        sex:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Choice:
+                choices:  [0, 1]
+                message:  Il genere selezionato non è valido
+        birthDate:
+            - Date:
+                message: "Data non valida"
+        school:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il nome della scuola deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il nome della scuola non può superare {{ limit }} caratteri."
         username:
             - NotBlank:
                 message: Campo obbligatorio
@@ -32,8 +75,20 @@ Smartdiary\UserBundle\Entity\User:
             - Length:
                 min: 3
                 max: 255
-                minMessage: "La password deve contenere almeno {{ limit }} caratteri."
-                maxMessage: "La password non può superare {{ limit }} caratteri."
+                minMessage: "L'email deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "L'email non può superare {{ limit }} caratteri."
             - Email:
-                message: The email "{{ value }}" is not a valid email.
-                checkMX: true
+                message: "{{ value }} non è un indirizzo email valido"
+                checkMX: false
+        teacher_email:
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "L'email deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "L'email non può superare {{ limit }} caratteri."
+            - Email:
+                message: "{{ value }} non è un indirizzo email valido"
+                checkMX: false
+            - Smartdiary\UserBundle\Validator\Constraints\TeacherEmail: ~

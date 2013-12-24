@@ -3,13 +3,14 @@ namespace Smartdiary\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface,
+    Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Smartdiary\UserBundle\Entity\User
  *
+ * @ORM\Entity(repositoryClass="Smartdiary\UserBundle\Entity\UserRepository")
  * @ORM\Table(name="user")
- * @ORM\Entity
  */
 class User implements UserInterface, \Serializable {
     /**
@@ -18,6 +19,41 @@ class User implements UserInterface, \Serializable {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string $surname
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $surname;
+
+    /**
+     * @var string $school
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $school;
+
+    /**
+     * @var string $birthDate
+     *
+     * @ORM\Column(name="birth_date", type="date")
+     */
+    private $birthDate;
+
+    /**
+     * @var string $sex
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $sex;
 
     /**
      * @var string $username
@@ -68,6 +104,13 @@ class User implements UserInterface, \Serializable {
     private $roleId;
 
     /**
+     * @var string $teacherEmail
+     *
+     * @ORM\Column(name="teacher_email", type="string", length=255, unique=true, nullable=true)
+     */
+    private $teacher_email;
+
+    /**
      * @var datetime $createdAt
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -96,6 +139,14 @@ class User implements UserInterface, \Serializable {
     {
         $this->isActive = true;
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
     }
 
     public function eraseCredentials()
@@ -196,6 +247,59 @@ class User implements UserInterface, \Serializable {
     }
 
     /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSchool()
+    {
+        return $this->school;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTeacherEmail()
+    {
+        return $this->teacher_email;
+    }
+
+    public function hasTeacherEmail(ExecutionContextInterface $context)
+    {
+        if($this->getRole()->getId()==2 && !$this->getTeacherEmail())
+        {
+            $context->addViolationAt(
+                'teacher_email',
+                'Email non valida',
+                array(),
+                null
+            );
+        }
+    }
+
+    /**
      * @param mixed $id
      */
     public function setId($id)
@@ -268,6 +372,54 @@ class User implements UserInterface, \Serializable {
     }
 
     /**
+     * @param string $birthDate
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = \DateTime::createFromFormat('d/m/Y', $birthDate);
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param string $school
+     */
+    public function setSchool($school)
+    {
+        $this->school = $school;
+    }
+
+    /**
+     * @param string $sex
+     */
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+    }
+
+    /**
+     * @param string $surname
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+    }
+
+    /**
+     * @param string $teacher_email
+     */
+    public function setTeacherEmail($teacher_email)
+    {
+        $this->teacher_email = $teacher_email;
+    }
+
+    /**
      * Serialize the User object
      * @see Serializable::serialize()
      */
@@ -285,4 +437,30 @@ class User implements UserInterface, \Serializable {
         list($this->id, $this->username, $this->password) = unserialize($serialized);
     }
 
-} 
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return User
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return User
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+}
