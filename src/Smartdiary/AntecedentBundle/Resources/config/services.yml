@@ -1,0 +1,7 @@
+parameters:
+#    smartdiary_antecedent.example.class: Smartdiary\AntecedentBundle\Example
+
+services:
+#    smartdiary_antecedent.example:
+#        class: %smartdiary_antecedent.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

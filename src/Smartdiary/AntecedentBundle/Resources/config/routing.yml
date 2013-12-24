@@ -1,0 +1,3 @@
+SmartdiaryAntecedentBundle_AntecedentController:
+    resource: "@SmartdiaryAntecedentBundle/Controller/AntecedentController.php"
+    type: annotation

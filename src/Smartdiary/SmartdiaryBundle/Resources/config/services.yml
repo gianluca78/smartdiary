@@ -1,0 +1,7 @@
+parameters:
+#    smartdiary_smartdiary.example.class: Smartdiary\SmartdiaryBundle\Example
+
+services:
+#    smartdiary_smartdiary.example:
+#        class: %smartdiary_smartdiary.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

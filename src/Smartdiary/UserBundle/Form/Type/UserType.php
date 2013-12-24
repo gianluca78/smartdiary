@@ -26,7 +26,7 @@ class UserType extends AbstractType
             ->add('birth_date', null, array(
                 'label' => 'Data di nascita',
                 'attr' => array(
-                    'data-role' => 'date'
+                    'placeholder' => 'Formato data: gg/mm/aaaa'
                 )
             ))
             ->add('username')
@@ -49,7 +49,10 @@ class UserType extends AbstractType
             ))
             ->add('teacher_email', null, array(
                 'label' => 'Email del docente',
-                'required' => false
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Inserire l\'email di un docente già iscritto a Smartdiary'
+                )
             ))
             ->add('school', null, array(
                 'label' => 'Scuola'

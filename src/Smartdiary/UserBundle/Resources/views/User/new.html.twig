@@ -5,6 +5,10 @@
 {% block title %}Smartdiary - Registrazione utente{% endblock %}
 {% block page_title %}Registrazione utente{% endblock %}
 
+{% block header_buttons %}
+    <a href="#" data-role="button" data-icon="home" data-ajax="false">Home</a>
+{% endblock %}
+
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('success') %}
         <div class="flash-success">

@@ -1,0 +1,3 @@
+SmartdiarySmartdiaryBundle_SmartdiaryController:
+    resource: "@SmartdiarySmartdiaryBundle/Controller/SmartdiaryController.php"
+    type: annotation

@@ -1,3 +1,7 @@
+smartdiary_smartdiary:
+    resource: "@SmartdiarySmartdiaryBundle/Resources/config/routing.yml"
+    prefix:   /
+
 _login:
     path:   /login
     defaults:  { _controller: SmartdiarySecurityBundle:Security:login }
@@ -5,6 +9,10 @@ _logout:
     path: /logout
 _security_check:
     path:   /security_check
+
+SmartdiaryAntecedentBundle:
+    resource: "@SmartdiaryAntecedentBundle/Resources/config/routing.yml"
+    prefix:   /
 
 SmartdiaryUserBundle:
     resource: "@SmartdiaryUserBundle/Resources/config/routing.yml"

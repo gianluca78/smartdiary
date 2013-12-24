@@ -14,7 +14,10 @@
 
 <body>
     <div data-role="page">
-        <div data-role="header"><h1>{% block page_title %}{% endblock %}</h1></div>
+        <div data-role="header">
+            <h1>{% block page_title %}{% endblock %}</h1>
+            {% block header_buttons %}{% endblock %}
+        </div>
         <div role="main" class="ui-content">
             {% block body %}{% endblock %}
         </div>
