@@ -5,3 +5,25 @@ services:
 #    smartdiary_antecedent.example:
 #        class: %smartdiary_antecedent.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    smartdiary_antecedent.form.type.when:
+            class: Smartdiary\AntecedentBundle\Form\Type\WhenType
+            tags:
+                - { name: form.type, alias: antecedent_when }
+
+    smartdiary_antecedent.form.type.where:
+            class: Smartdiary\AntecedentBundle\Form\Type\WhereDetailType
+            tags:
+                - { name: form.type, alias: antecedent_where_detail }
+
+    smartdiary_antecedent.form.type.who:
+            class: Smartdiary\AntecedentBundle\Form\Type\WhoDetailType
+            tags:
+                - { name: form.type, alias: antecedent_who_detail }
+
+    smartdiary_antecedent.form.type.what:
+            class: Smartdiary\AntecedentBundle\Form\Type\WhatType
+            tags:
+                - { name: form.type, alias: antecedent_what }
+
+    smartdiary_user.create_antecedent_form_handler:
+        class: Smartdiary\AntecedentBundle\Form\Handler\CreateAntecedentFormHandler

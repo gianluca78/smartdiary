@@ -37,6 +37,14 @@ class AntecedentWhere
     private $example;
 
     /**
+     * @var string $slug
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"label"})
+     */
+    private $slug;
+
+    /**
      * @var datetime $createdAt
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -52,6 +60,11 @@ class AntecedentWhere
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
+
+    public function __toString()
+    {
+        return $this->label;
+    }
 
     /**
      * Get id
@@ -153,5 +166,28 @@ class AntecedentWhere
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return AntecedentWhere
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

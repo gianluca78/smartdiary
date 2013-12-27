@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Antecedente quando{% endblock %}
+{% block page_title %}Antecedente quando{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryantecedent/js/new_antecedent_when.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_antecedent_antecedent_index') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="description">
+        Quando?
+    </div>
+    {{ form(form) }}
+{% endblock %}

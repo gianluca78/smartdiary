@@ -1,0 +1,74 @@
+Smartdiary\SmartdiaryBundle\Entity\Smartdiary:
+    properties:
+        antecedentWhen:
+            - NotBlank:
+                message: Campo obbligatorio
+                groups: [antecedent_when]
+            - Type:
+                type: string
+                groups: [antecedent_when]
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+                groups: [antecedent-when]
+        antecedentWhereDetail:
+            - NotBlank:
+                message: Campo obbligatorio
+                groups: [antecedent-where-detail]
+            - Type:
+                type: string
+                groups: [antecedent-where-detail]
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+                groups: [antecedent-where-detail]
+        antecedentWhoDetail:
+            - NotBlank:
+                message: Campo obbligatorio
+                groups: [antecedent-who]
+            - Type:
+                type: string
+                groups: [antecedent-who]
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+                groups: [antecedent-who]
+        antecedentWhat:
+            - NotBlank:
+                message: Campo obbligatorio
+                groups: [antecedent-what]
+            - Type:
+                type: string
+                groups: [antecedent-what]
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+                groups: [antecedent-what]
+        antecedentBehaviorDetail:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+        consequence:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."

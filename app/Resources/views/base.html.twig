@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div data-role="page">
+    <div data-role="page" id="smartdiary">
         <div data-role="header">
             <h1>{% block page_title %}{% endblock %}</h1>
             {% block header_buttons %}{% endblock %}
@@ -21,7 +21,19 @@
         <div role="main" class="ui-content">
             {% block body %}{% endblock %}
         </div>
-        <div data-role="footer"><h4>2012 {{ "now"|date('Y') }} - Progetto Edutainment</h4></div>
+        <div data-role="footer"><h4>2012 - {{ "now"|date('Y') }} Progetto Edutainment</h4></div>
     </div>
+
+    <script type="text/javascript">
+        $( document ).on( 'pageinit','#smartdiary', function(event){
+            if('localStorage' in window && window['localStorage'] == null)
+            {
+                alert('Attenzione! Il tuo browser non è supportato, utilizzane uno più recente!');
+            }
+        });
+    </script>
+
+    {% block javascripts %}{% endblock %}
 </body>
+
 </html>

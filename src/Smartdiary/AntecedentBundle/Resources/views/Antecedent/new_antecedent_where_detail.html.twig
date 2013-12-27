@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Antecedente dove{% endblock %}
+{% block page_title %}Antecedente dove{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryantecedent/js/new_antecedent_where.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_antecedent_antecedent_newantecedentwherelist') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {{ form(form) }}
+{% endblock %}

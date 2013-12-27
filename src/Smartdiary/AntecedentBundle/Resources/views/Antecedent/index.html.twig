@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Lista antecedenti{% endblock %}
+{% block page_title %}Lista antecedenti{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryantecedent/js/new_antecedent_list.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="#" data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="description">
+        Descrivi brevemente la situazione in cui ti trovavi quando hai provato disagio: quando è successo, dove eri,
+        con chi eri, cosa stavi facendo.
+    </div>
+
+    <ul data-role="listview">
+        <li id="when"><a href="{{ path('smartdiary_antecedent_antecedent_newantecedentwhen') }}" data-ajax="false">Quando</a></li>
+        <li id="where"><a href="{{ path('smartdiary_antecedent_antecedent_newantecedentwherelist') }}" data-ajax="false">Dove</a></li>
+        <li id="who"><a href="{{ path('smartdiary_antecedent_antecedent_newantecedentwholist') }}" data-ajax="false">Chi</a></li>
+        <li id="what"><a href="{{ path('smartdiary_antecedent_antecedent_newantecedentwhat') }}" data-ajax="false">Cosa</a></li>
+    </ul>
+{% endblock %}
