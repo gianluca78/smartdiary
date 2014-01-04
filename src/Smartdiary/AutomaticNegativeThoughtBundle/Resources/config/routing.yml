@@ -1,0 +1,3 @@
+SmartdiaryAutomaticNegativeThoughtBundle_ANTController:
+    resource: "@SmartdiaryAutomaticNegativeThoughtBundle/Controller/ANTController.php"
+    type: annotation

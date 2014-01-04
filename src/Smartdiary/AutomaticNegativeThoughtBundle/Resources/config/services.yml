@@ -1,0 +1,11 @@
+parameters:
+#    smartdiary_automatic_negative_thought.example.class: Smartdiary\AutomaticNegativeThoughtBundle\Example
+
+services:
+    smartdiary_automatic_negative_thought.form.type.ant:
+        class: Smartdiary\AutomaticNegativeThoughtBundle\Form\Type\ANTType
+        tags:
+            - { name: form.type, alias: ant }
+
+    smartdiary_user.create_ant_form_handler:
+            class: Smartdiary\AutomaticNegativeThoughtBundle\Form\Handler\CreateANTFormHandler

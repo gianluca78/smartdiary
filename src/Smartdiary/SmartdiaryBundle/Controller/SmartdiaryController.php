@@ -16,5 +16,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
  */
 class SmartdiaryController extends Controller
 {
+    /**
+     * @Route("/nuovo")
+     * @Method({"GET"})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newAction()
+    {
+        return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:new.html.twig');
+    }
 
 }

@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Pensieri Automatici Negativi{% endblock %}
+{% block page_title %}Esempi di Pensieri Automatici Negativi{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_automaticnegativethought_ant_index') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    <ul data-role="listview">
+        <li>Devo piacere a tutti</li>
+        <li>È terribile non essere approvati</li>
+        <li>È troppo complicato per me</li>
+        <li>Gli altri penseranno male di me</li>
+        <li>Gli altri si accorgeranno che sudo</li>
+        <li>Gli altri si accorgeranno del mio rossore</li>
+        <li>Gli altri sono migliori di me</li>
+        <li>La mia vita è un disastro</li>
+        <li>Nessuno mi trova simpatico</li>
+        <li>Niente mi è d’aiuto</li>
+        <li>Non riesco a frenare i miei impulsi</li>
+        <li>Non starò mai meglio</li>
+        <li>Non vale la pena di vivere</li>
+        <li>Perderò il controllo</li>
+        <li>Sono un buono a nulla</li>
+        <li>Sono un fallimento</li>
+        <li>Sto per avere un attacco cardiaco</li>
+        <li>Sto per impazzire</li>
+        <li>Sto per morire</li>
+        <li>Sto per svenire</li>
+    </ul>
+{% endblock %}

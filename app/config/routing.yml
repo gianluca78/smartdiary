@@ -1,7 +1,3 @@
-smartdiary_smartdiary:
-    resource: "@SmartdiarySmartdiaryBundle/Resources/config/routing.yml"
-    prefix:   /
-
 _login:
     path:   /login
     defaults:  { _controller: SmartdiarySecurityBundle:Security:login }
@@ -12,6 +8,22 @@ _security_check:
 
 SmartdiaryAntecedentBundle:
     resource: "@SmartdiaryAntecedentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+SmartdiaryAutomaticNegativeThoughtBundle:
+    resource: "@SmartdiaryAutomaticNegativeThoughtBundle/Resources/config/routing.yml"
+    prefix:   /
+
+SmartdiaryBehaviorBundle:
+    resource: "@SmartdiaryBehaviorBundle/Resources/config/routing.yml"
+    prefix:   /
+
+SmartdiaryConsequenceBundle:
+    resource: "@SmartdiaryConsequenceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+SmartdiarySmartdiaryBundle:
+    resource: "@SmartdiarySmartdiaryBundle/Resources/config/routing.yml"
     prefix:   /
 
 SmartdiaryUserBundle:

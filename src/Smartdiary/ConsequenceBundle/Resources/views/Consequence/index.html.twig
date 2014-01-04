@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Conseguenze{% endblock %}
+{% block page_title %}Conseguenze{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryconsequence/js/new_consequence_list.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiary_new') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <ul data-role="listview">
+        <li id="behavior"><a href="{{ path('smartdiary_behavior_behavior_newbehavior') }}" data-ajax="false">Comportamento</a></li>
+        <li id="emotion"><a href="{{ path('smartdiary_antecedent_antecedent_index') }}" data-ajax="false">Emozioni</a></li>
+        <li id="sensation"><a href="#" data-ajax="false">Sensazioni</a></li>
+    </ul>
+{% endblock %}

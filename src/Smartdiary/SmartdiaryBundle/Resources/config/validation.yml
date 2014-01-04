@@ -52,7 +52,20 @@ Smartdiary\SmartdiaryBundle\Entity\Smartdiary:
                 minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
                 maxMessage: "Il campo non può superare {{ limit }} caratteri."
                 groups: [antecedent-what]
-        antecedentBehaviorDetail:
+        behavior:
+            - NotBlank:
+                message: Campo obbligatorio
+                groups: [antecedent-who]
+            - Type:
+                type: string
+                groups: [antecedent-who]
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+                groups: [antecedent-who]
+        consequence:
             - NotBlank:
                 message: Campo obbligatorio
             - Type:
@@ -62,7 +75,9 @@ Smartdiary\SmartdiaryBundle\Entity\Smartdiary:
                 max: 255
                 minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
                 maxMessage: "Il campo non può superare {{ limit }} caratteri."
-        consequence:
+Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought:
+    properties:
+        ant:
             - NotBlank:
                 message: Campo obbligatorio
             - Type:
@@ -70,5 +85,15 @@ Smartdiary\SmartdiaryBundle\Entity\Smartdiary:
             - Length:
                 min: 3
                 max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+        strenght:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: integer
+            - Length:
+                min: 1
+                max: 3
                 minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
                 maxMessage: "Il campo non può superare {{ limit }} caratteri."

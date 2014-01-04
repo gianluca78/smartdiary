@@ -1,0 +1,11 @@
+parameters:
+
+services:
+    smartdiary_behavior.form.type.behavior:
+        class: Smartdiary\BehaviorBundle\Form\Type\BehaviorType
+        tags:
+            - { name: form.type, alias: behavior }
+
+    smartdiary_user.create_behavior_form_handler:
+            class: Smartdiary\BehaviorBundle\Form\Handler\CreateBehaviorFormHandler
+

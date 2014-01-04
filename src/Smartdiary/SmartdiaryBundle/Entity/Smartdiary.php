@@ -2,7 +2,8 @@
 
 namespace Smartdiary\SmartdiaryBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection,
+    Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface,
     Symfony\Component\Validator\ExecutionContextInterface;
@@ -65,11 +66,11 @@ class Smartdiary
     private $antecedentWhat;
 
     /**
-     * @var string $antecedentBehaviorDetail
+     * @var string $behavior
      *
-     * @ORM\Column(name="antecedent_behavior_detail", type="string", length=255)
+     * @ORM\Column(name="behavior", type="string", length=255)
      */
-    private $antecedentBehaviorDetail;
+    private $behavior;
 
     /**
      * @var string $consequenceDetail
@@ -126,10 +127,14 @@ class Smartdiary
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AutomaticNegativeThought", mappedBy="smartdiary")
+     */
+    private $automaticNegativeThoughts;
 
     public function __construct()
     {
-
+        $this->automaticNegativeThoughts = new ArrayCollection();
     }
 
     /**
@@ -281,26 +286,26 @@ class Smartdiary
     }
 
     /**
-     * Set antecedentBehaviorDetail
+     * Set behavior
      *
-     * @param string $antecedentBehaviorDetail
+     * @param string $behavior
      * @return Smartdiary
      */
-    public function setAntecedentBehaviorDetail($antecedentBehaviorDetail)
+    public function setBehavior($behavior)
     {
-        $this->antecedentBehaviorDetail = $antecedentBehaviorDetail;
+        $this->behavior = $behavior;
 
         return $this;
     }
 
     /**
-     * Get antecedentBehaviorDetail
+     * Get behavior
      *
      * @return string 
      */
-    public function getAntecedentBehaviorDetail()
+    public function getBehavior()
     {
-        return $this->antecedentBehaviorDetail;
+        return $this->behavior;
     }
 
     /**
@@ -462,5 +467,38 @@ class Smartdiary
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add automaticNegativeThoughts
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought $automaticNegativeThoughts
+     * @return Smartdiary
+     */
+    public function addAutomaticNegativeThought(\Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought $automaticNegativeThoughts)
+    {
+        $this->automaticNegativeThoughts[] = $automaticNegativeThoughts;
+
+        return $this;
+    }
+
+    /**
+     * Remove automaticNegativeThoughts
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought $automaticNegativeThoughts
+     */
+    public function removeAutomaticNegativeThought(\Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought $automaticNegativeThoughts)
+    {
+        $this->automaticNegativeThoughts->removeElement($automaticNegativeThoughts);
+    }
+
+    /**
+     * Get automaticNegativeThoughts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAutomaticNegativeThoughts()
+    {
+        return $this->automaticNegativeThoughts;
     }
 }

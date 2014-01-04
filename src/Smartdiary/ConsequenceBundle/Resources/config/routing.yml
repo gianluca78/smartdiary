@@ -1,0 +1,3 @@
+SmartdiaryConsequenceBundle_ConsequenceController:
+    resource: "@SmartdiaryConsequenceBundle/Controller/ConsequenceController.php"
+    type: annotation

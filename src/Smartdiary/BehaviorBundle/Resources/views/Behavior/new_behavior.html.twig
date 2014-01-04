@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Comportamento{% endblock %}
+{% block page_title %}Comportamento{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiarybehavior/js/new_behavior.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_consequence_consequence_index') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="description">
+        Descrivi come ti sei comportato nella situazione che hai vissuto.
+        Es.: mi sono arrabbiato con i compagni; ho dato un pugno alla porta; mi sono messo a piangere, ecc.
+    </div>
+    {{ form(form) }}
+{% endblock %}
