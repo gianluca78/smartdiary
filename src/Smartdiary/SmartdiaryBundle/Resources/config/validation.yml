@@ -120,7 +120,7 @@ Smartdiary\SmartdiaryBundle\Entity\SmartdiarySensation:
             - NotBlank:
                 message: Campo obbligatorio
             - Type:
-                type: integer
+                type: numeric
         strenght:
             - NotBlank:
                 message: Campo obbligatorio

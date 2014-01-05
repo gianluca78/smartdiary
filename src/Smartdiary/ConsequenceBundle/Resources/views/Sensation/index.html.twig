@@ -4,7 +4,7 @@
 {% block page_title %}Conseguenze - Sensazioni{% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/smartdiaryconsequence/js/new_consequence_list.js') }}"></script>
+    <script src="{{ asset('bundles/smartdiaryconsequence/js/new_sensation_list.js') }}"></script>
 {% endblock %}
 
 {% block header_buttons %}
@@ -13,14 +13,32 @@
 {% endblock %}
 
 {% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     <div class="description">Seleziona quali sensazioni hai provato. Valuta inoltre la loro intensità
         su una scala da zero a cento.
     </div>
 
-    <ul data-role="listview">
-        <li><a href="{{ path('smartdiary_consequence_emotion_newemotionlist') }}" data-ajax="false">
+    <ul id="sensations" data-role="listview">
+        <li><a href="{{ path('smartdiary_consequence_sensation_newsensationlist') }}" data-ajax="false">
                 Che sensazioni ho provato?
             </a>
         </li>
     </ul>
+
+    <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+        <div data-role="header" data-theme="a">
+            <h1>Cancellazione</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <h3 class="ui-title">Sei sicuro di volere cancellare questa sensazione?</h3>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Annulla</a>
+            <a href="#" id="confirm-delete" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">
+                Cancella</a>
+        </div>
+    </div>
 {% endblock %}

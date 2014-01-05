@@ -7,5 +7,13 @@ services:
             tags:
                 - { name: form.type, alias: emotion_detail }
 
+    smartdiary_consequence.form.type.sensation_detail:
+            class: Smartdiary\ConsequenceBundle\Form\Type\SensationDetailType
+            tags:
+                - { name: form.type, alias: sensation_detail }
+
     smartdiary_consequence.create_emotion_form_handler:
         class: Smartdiary\ConsequenceBundle\Form\Handler\CreateEmotionFormHandler
+
+    smartdiary_consequence.create_sensation_form_handler:
+        class: Smartdiary\ConsequenceBundle\Form\Handler\CreateSensationFormHandler

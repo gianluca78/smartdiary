@@ -11,7 +11,7 @@
 {% block body %}
     <ul data-role="listview">
         {% for element in sensationList %}
-        <li><a href="{{ path('smartdiary_antecedent_antecedent_newantecedentwheredetail',
+        <li><a href="{{ path('smartdiary_consequence_sensation_newsensationstrenght',
             { 'slug' : element.slug }
             ) }}" data-ajax="false">
             <h3>{{ element.label }}</h3>
