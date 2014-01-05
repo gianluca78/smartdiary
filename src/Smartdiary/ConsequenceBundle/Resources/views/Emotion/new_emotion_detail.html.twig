@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Emozioni - dettaglio{% endblock %}
+{% block page_title %}Emozioni - dettaglio{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryconsequence/js/new_emotion_detail.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_consequence_emotion_index') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {{ form(form) }}
+{% endblock %}

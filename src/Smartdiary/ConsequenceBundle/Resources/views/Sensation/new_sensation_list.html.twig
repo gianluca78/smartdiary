@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Lista sensazioni{% endblock %}
+{% block page_title %}Lista sensazioni{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_consequence_sensation_index') }}" data-icon="arrow-l"
+       data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    <ul data-role="listview">
+        {% for element in sensationList %}
+        <li><a href="{{ path('smartdiary_antecedent_antecedent_newantecedentwheredetail',
+            { 'slug' : element.slug }
+            ) }}" data-ajax="false">
+            <h3>{{ element.label }}</h3>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

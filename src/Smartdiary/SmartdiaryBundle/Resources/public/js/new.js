@@ -10,7 +10,7 @@ $(document).ready(function(){
         $('#antecedent a').addClass('ui-icon-check');
     }
 
-    if(localStorage.getItem("antecedent_when")) {
+    if(localStorage.getItem("ants") && localStorage.getItem('ants')!='[]') {
         $('#automatic_negative_thought a').removeClass('ui-icon-carat-r');
         $('#automatic_negative_thought a').addClass('ui-icon-check');
     }

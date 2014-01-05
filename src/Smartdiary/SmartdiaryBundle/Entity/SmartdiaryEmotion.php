@@ -8,12 +8,12 @@ use Symfony\Component\Security\Core\User\UserInterface,
     Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
- * Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought
+ * Smartdiary\SmartdiaryBundle\Entity\SmartdiaryEmotion
  *
- * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThoughtRepository")
- * @ORM\Table(name="automatic_negative_thought")
+ * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryEmotionRepository")
+ * @ORM\Table(name="smartdiary_emotion")
  */
-class AutomaticNegativeThought
+class SmartdiaryEmotion
 {
     /**
      * @ORM\Id
@@ -30,19 +30,11 @@ class AutomaticNegativeThought
     private $smartdiaryId;
 
     /**
-     * @var string $ant
+     * @var string $emotionId
      *
-     * @ORM\Column(name="ant", type="string", length=255)
+     * @ORM\Column(name="emotion_id", type="integer")
      */
-    private $ant;
-
-    /**
-     * @var string $slug
-     *
-     * @ORM\Column(type="string", length=255, unique=true)
-     * @Gedmo\Slug(fields={"ant"})
-     */
-    private $slug;
+    private $emotionId;
 
     /**
      * @var string $strenght
@@ -52,7 +44,7 @@ class AutomaticNegativeThought
     private $strenght;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smartdiary\SmartdiaryBundle\Entity\Smartdiary", inversedBy="automaticNegativeThoughts")
+     * @ORM\ManyToOne(targetEntity="Smartdiary\SmartdiaryBundle\Entity\Smartdiary", inversedBy="emotions")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */
     private $smartdiary;
@@ -74,10 +66,6 @@ class AutomaticNegativeThought
      */
     private $updatedAt;
 
-    public function __toString()
-    {
-        return $this->ant;
-    }
 
     /**
      * Get id
@@ -92,10 +80,10 @@ class AutomaticNegativeThought
     /**
      * Set smartdiaryId
      *
-     * @param \int $smartdiaryId
-     * @return AutomaticNegativeThought
+     * @param integer $smartdiaryId
+     * @return SmartdiaryEmotion
      */
-    public function setSmartdiaryId(\int $smartdiaryId)
+    public function setSmartdiaryId($smartdiaryId)
     {
         $this->smartdiaryId = $smartdiaryId;
 
@@ -105,7 +93,7 @@ class AutomaticNegativeThought
     /**
      * Get smartdiaryId
      *
-     * @return \int 
+     * @return integer 
      */
     public function getSmartdiaryId()
     {
@@ -113,56 +101,33 @@ class AutomaticNegativeThought
     }
 
     /**
-     * Set ant
+     * Set emotionId
      *
-     * @param string $ant
-     * @return AutomaticNegativeThought
+     * @param integer $emotionId
+     * @return SmartdiaryEmotion
      */
-    public function setAnt($ant)
+    public function setEmotionId($emotionId)
     {
-        $this->ant = $ant;
+        $this->emotionId = $emotionId;
 
         return $this;
     }
 
     /**
-     * Get ant
+     * Get emotionId
      *
-     * @return string 
+     * @return integer 
      */
-    public function getAnt()
+    public function getEmotionId()
     {
-        return $this->ant;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return AutomaticNegativeThought
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
+        return $this->emotionId;
     }
 
     /**
      * Set strenght
      *
-     * @param $strenght
-     * @return AutomaticNegativeThought
+     * @param integer $strenght
+     * @return SmartdiaryEmotion
      */
     public function setStrenght($strenght)
     {
@@ -174,7 +139,7 @@ class AutomaticNegativeThought
     /**
      * Get strenght
      *
-     * @return \int 
+     * @return integer 
      */
     public function getStrenght()
     {
@@ -185,7 +150,7 @@ class AutomaticNegativeThought
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return AutomaticNegativeThought
+     * @return SmartdiaryEmotion
      */
     public function setCreatedAt($createdAt)
     {
@@ -208,7 +173,7 @@ class AutomaticNegativeThought
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return AutomaticNegativeThought
+     * @return SmartdiaryEmotion
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -231,7 +196,7 @@ class AutomaticNegativeThought
      * Set smartdiary
      *
      * @param \Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiary
-     * @return AutomaticNegativeThought
+     * @return SmartdiaryEmotion
      */
     public function setSmartdiary(\Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiary = null)
     {

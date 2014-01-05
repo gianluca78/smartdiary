@@ -2,6 +2,10 @@ parameters:
 #    smartdiary_consequence.example.class: Smartdiary\ConsequenceBundle\Example
 
 services:
-#    smartdiary_consequence.example:
-#        class: %smartdiary_consequence.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    smartdiary_consequence.form.type.emotion_detail:
+            class: Smartdiary\ConsequenceBundle\Form\Type\EmotionDetailType
+            tags:
+                - { name: form.type, alias: emotion_detail }
+
+    smartdiary_consequence.create_emotion_form_handler:
+        class: Smartdiary\ConsequenceBundle\Form\Handler\CreateEmotionFormHandler

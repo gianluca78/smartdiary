@@ -132,9 +132,22 @@ class Smartdiary
      */
     private $automaticNegativeThoughts;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryEmotion", mappedBy="smartdiary")
+     */
+    private $emotions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Smartdiary\SmartdiaryBundle\Entity\SmartdiarySensation", mappedBy="smartdiary")
+     */
+    private $sensations;
+
+
     public function __construct()
     {
         $this->automaticNegativeThoughts = new ArrayCollection();
+        $this->emotions = new ArrayCollection();
+        $this->sensations = new ArrayCollection();
     }
 
     /**
@@ -500,5 +513,71 @@ class Smartdiary
     public function getAutomaticNegativeThoughts()
     {
         return $this->automaticNegativeThoughts;
+    }
+
+    /**
+     * Add emotions
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\Emotion $emotions
+     * @return Smartdiary
+     */
+    public function addEmotion(\Smartdiary\SmartdiaryBundle\Entity\Emotion $emotions)
+    {
+        $this->emotions[] = $emotions;
+
+        return $this;
+    }
+
+    /**
+     * Remove emotions
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\Emotion $emotions
+     */
+    public function removeEmotion(\Smartdiary\SmartdiaryBundle\Entity\Emotion $emotions)
+    {
+        $this->emotions->removeElement($emotions);
+    }
+
+    /**
+     * Get emotions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEmotions()
+    {
+        return $this->emotions;
+    }
+
+    /**
+     * Add sensations
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\Sensation $sensations
+     * @return Smartdiary
+     */
+    public function addSensation(\Smartdiary\SmartdiaryBundle\Entity\Sensation $sensations)
+    {
+        $this->sensations[] = $sensations;
+
+        return $this;
+    }
+
+    /**
+     * Remove sensations
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\Sensation $sensations
+     */
+    public function removeSensation(\Smartdiary\SmartdiaryBundle\Entity\Sensation $sensations)
+    {
+        $this->sensations->removeElement($sensations);
+    }
+
+    /**
+     * Get sensations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSensations()
+    {
+        return $this->sensations;
     }
 }

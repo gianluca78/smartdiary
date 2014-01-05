@@ -1,3 +1,11 @@
 SmartdiaryConsequenceBundle_ConsequenceController:
     resource: "@SmartdiaryConsequenceBundle/Controller/ConsequenceController.php"
     type: annotation
+
+SmartdiaryConsequenceBundle_EmotionController:
+    resource: "@SmartdiaryConsequenceBundle/Controller/EmotionController.php"
+    type: annotation
+
+SmartdiaryConsequenceBundle_SensationController:
+    resource: "@SmartdiaryConsequenceBundle/Controller/SensationController.php"
+    type: annotation

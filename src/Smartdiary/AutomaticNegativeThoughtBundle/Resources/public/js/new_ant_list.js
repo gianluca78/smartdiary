@@ -22,7 +22,7 @@ function deleteAnt(index){
 
     localStorage.setItem("ants", JSON.stringify(ants));
 
-    $('#ant-'+ index +'').remove();
+    $('#ant-'+ index +'').parent().remove();
 
     $("#ants").listview("refresh");
 

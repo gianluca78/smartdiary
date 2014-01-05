@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Conseguenze- Sensazioni{% endblock %}
+{% block page_title %}Conseguenze - Sensazioni{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryconsequence/js/new_consequence_list.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_consequence_consequence_index') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    <div class="description">Seleziona quali sensazioni hai provato. Valuta inoltre la loro intensità
+        su una scala da zero a cento.
+    </div>
+
+    <ul data-role="listview">
+        <li><a href="{{ path('smartdiary_consequence_emotion_newemotionlist') }}" data-ajax="false">
+                Che sensazioni ho provato?
+            </a>
+        </li>
+    </ul>
+{% endblock %}

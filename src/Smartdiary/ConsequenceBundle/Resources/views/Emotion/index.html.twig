@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Conseguenze- Emozioni{% endblock %}
+{% block page_title %}Conseguenze - Emozioni{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryconsequence/js/new_emotion_list.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_consequence_consequence_index') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="description"> Seleziona cosa hai provato nella situazione descritta. Valuta inoltre l'intensità delle
+        tue emozioni su una scala da zero a cento.
+    </div>
+
+    <ul id="emotions" data-role="listview">
+        <li><a href="{{ path('smartdiary_consequence_emotion_newemotionlist') }}" data-ajax="false">
+                Che emozioni ho provato?
+            </a>
+        </li>
+    </ul>
+
+    <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+        <div data-role="header" data-theme="a">
+            <h1>Cancellazione</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <h3 class="ui-title">Sei sicuro di volere cancellare questa emozione?</h3>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Annulla</a>
+            <a href="#" id="confirm-delete" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">
+                Cancella</a>
+        </div>
+    </div>
+{% endblock %}
