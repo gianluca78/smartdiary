@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Request;
 
-use Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought;
+use Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAutomaticNegativeThought;
 
 /**
  * @Route("/pensieri-automatici-negativi")
@@ -49,7 +49,7 @@ class ANTController extends Controller
      */
     public function newAction(Request $request)
     {
-        $automaticNegativeThought = new AutomaticNegativeThought();
+        $automaticNegativeThought = new SmartdiaryAutomaticNegativeThought();
         $form = $this->createForm('ant', $automaticNegativeThought, array(
                 'action' => $this->generateUrl('smartdiary_automaticnegativethought_ant_new'),
                 'attr' => array('data-ajax' => 'false')

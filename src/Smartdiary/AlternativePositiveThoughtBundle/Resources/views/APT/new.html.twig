@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Smartdiary - Antecedente quando{% endblock %}
-{% block page_title %}Antecedente quando{% endblock %}
+{% block title %}Smartdiary - Nuovo pensiero alternativo funzionale{% endblock %}
+{% block page_title %}Nuovo pensiero alternativo funzionale{% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/smartdiaryantecedent/js/new_antecedent_when.js') }}"></script>
+    <script src="{{ asset('bundles/smartdiaryalternativepositivethought/js/new.js') }}"></script>
 {% endblock %}
 
 {% block header_buttons %}
-    <a href="{{ path('smartdiary_antecedent_antecedent_index') }}"
+    <a href="{{ path('smartdiary_alternativepositivethought_apt_index') }}"
        data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
 {% endblock %}
 
@@ -18,6 +18,8 @@
             {{ flashMessage }}
         </div>
     {% endfor %}
+
+    <div class="description"></div>
 
     {{ form(form) }}
 {% endblock %}

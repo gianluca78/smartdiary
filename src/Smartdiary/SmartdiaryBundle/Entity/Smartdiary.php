@@ -128,7 +128,7 @@ class Smartdiary
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="AutomaticNegativeThought", mappedBy="smartdiary")
+     * @ORM\OneToMany(targetEntity="SmartdiaryAutomaticNegativeThought", mappedBy="smartdiary")
      */
     private $automaticNegativeThoughts;
 

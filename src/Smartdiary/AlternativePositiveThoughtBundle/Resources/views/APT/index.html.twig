@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Pensieri Alternativi Funzionali{% endblock %}
+{% block page_title %}Pensieri Alternativi Funzionali{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryalternativepositivethought/js/new_apt_list.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiary_new') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="description">
+        I pensieri utili sono quelli che ci aiutano a superare le situazioni difficili senza stare troppo male.
+        Seleziona il pensiero dannoso tra quelli che hai inserito prima e poi procedi inserendo un pensiero più utile.
+    </div>
+
+    <ul id="apts" data-role="listview">
+    </ul>
+
+{% endblock %}

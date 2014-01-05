@@ -6,6 +6,10 @@ _logout:
 _security_check:
     path:   /security_check
 
+SmartdiaryAlternativePositiveThought:
+    resource: "@SmartdiaryAlternativePositiveThoughtBundle/Resources/config/routing.yml"
+    prefix:   /
+
 SmartdiaryAntecedentBundle:
     resource: "@SmartdiaryAntecedentBundle/Resources/config/routing.yml"
     prefix:   /

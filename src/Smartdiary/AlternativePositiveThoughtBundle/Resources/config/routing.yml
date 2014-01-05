@@ -1,0 +1,3 @@
+SmartdiaryAlternativePositiveThoughtBundle_APTController:
+    resource: "@SmartdiaryAlternativePositiveThoughtBundle/Controller/APTController.php"
+    type: annotation

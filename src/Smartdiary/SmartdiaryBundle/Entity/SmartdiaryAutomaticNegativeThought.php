@@ -10,10 +10,10 @@ use Symfony\Component\Security\Core\User\UserInterface,
 /**
  * Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought
  *
- * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThoughtRepository")
- * @ORM\Table(name="automatic_negative_thought")
+ * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAutomaticNegativeThoughtRepository")
+ * @ORM\Table(name="smartdiary_automatic_negative_thought")
  */
-class AutomaticNegativeThought
+class SmartdiaryAutomaticNegativeThought
 {
     /**
      * @ORM\Id
@@ -52,7 +52,7 @@ class AutomaticNegativeThought
     private $strenght;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smartdiary\SmartdiaryBundle\Entity\Smartdiary", inversedBy="automaticNegativeThoughts")
+     * @ORM\ManyToOne(targetEntity="Smartdiary\SmartdiaryBundle\Entity\Smartdiary", inversedBy="SmartdiaryAutomaticNegativeThoughts")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */
     private $smartdiary;

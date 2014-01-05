@@ -75,7 +75,19 @@ Smartdiary\SmartdiaryBundle\Entity\Smartdiary:
                 max: 255
                 minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
                 maxMessage: "Il campo non può superare {{ limit }} caratteri."
-Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought:
+Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThought:
+    properties:
+        apt:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 255
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAutomaticNegativeThought:
     properties:
         ant:
             - NotBlank:

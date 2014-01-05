@@ -1,0 +1,11 @@
+parameters:
+#    smartdiary_alternative_positive_thought.example.class: Smartdiary\AlternativePositiveThoughtBundle\Example
+
+services:
+    smartdiary_alternative_positive_thought.form.type.ant:
+        class: Smartdiary\AlternativePositiveThoughtBundle\Form\Type\APTType
+        tags:
+            - { name: form.type, alias: apt }
+
+    smartdiary_user.create_apt_form_handler:
+            class: Smartdiary\AlternativePositiveThoughtBundle\Form\Handler\CreateAPTFormHandler
