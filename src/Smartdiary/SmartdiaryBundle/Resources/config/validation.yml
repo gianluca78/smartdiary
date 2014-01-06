@@ -129,13 +129,16 @@ Smartdiary\SmartdiaryBundle\Entity\SmartdiaryEmotion:
         strenghtRevaluation:
             - NotBlank:
                 message: Campo obbligatorio
+                groups: [emotion-revaluation]
             - Type:
                 type: integer
+                groups: [emotion-revaluation]
             - Length:
                 min: 1
                 max: 3
                 minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
                 maxMessage: "Il campo non può superare {{ limit }} caratteri."
+                groups: [emotion-revaluation]
 Smartdiary\SmartdiaryBundle\Entity\SmartdiarySensation:
     properties:
         sensationId:
@@ -146,10 +149,8 @@ Smartdiary\SmartdiaryBundle\Entity\SmartdiarySensation:
         strenght:
             - NotBlank:
                 message: Campo obbligatorio
-                groups: [emotion-revaluation]
             - Type:
                 type: integer
-                groups: [emotion-revaluation]
             - Length:
                 min: 1
                 max: 3

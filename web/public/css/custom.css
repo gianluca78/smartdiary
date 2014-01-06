@@ -9,3 +9,10 @@
     margin: 0px 0px 25px;
     padding: 12px 22px 12px 10px;
 }
+
+.flash-error {
+    background: none repeat scroll 0px 0px darkred;
+    color: #ffffff;
+    margin: 0px 0px 25px;
+    padding: 12px 22px 12px 10px;
+}

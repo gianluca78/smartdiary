@@ -39,7 +39,7 @@ class BehaviorController extends Controller
         if($formHandler->handle($form, $request)) {
             $this->get('session')->getFlashBag()->add('success', 'Salvataggio locale avvenuto con successo');
 
-            return $this->redirect($this->generateUrl('smartdiary_smartdiary_smartdiary_new'));
+            return $this->redirect($this->generateUrl('smartdiary_consequence_consequence_index'));
         }
 
         return $this->render('SmartdiaryBehaviorBundle:Behavior:new_behavior.html.twig', array(
