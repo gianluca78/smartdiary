@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Nuova rivalutazione emozioni{% endblock %}
+{% block page_title %}Nuova rivaluatione emozioni{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryemotionrevaluation/js/new.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_emotionrevaluation_emotionrevaluation_index') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {{ form(form) }}
+{% endblock %}

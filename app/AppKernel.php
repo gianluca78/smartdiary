@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Smartdiary\ConsequenceBundle\SmartdiaryConsequenceBundle(),
             new Smartdiary\AutomaticNegativeThoughtBundle\SmartdiaryAutomaticNegativeThoughtBundle(),
             new Smartdiary\AlternativePositiveThoughtBundle\SmartdiaryAlternativePositiveThoughtBundle(),
+            new Smartdiary\EmotionRevaluationBundle\SmartdiaryEmotionRevaluationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,3 +1,7 @@
+smartdiary_emotion_revaluation:
+    resource: "@SmartdiaryEmotionRevaluationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 _login:
     path:   /login
     defaults:  { _controller: SmartdiarySecurityBundle:Security:login }

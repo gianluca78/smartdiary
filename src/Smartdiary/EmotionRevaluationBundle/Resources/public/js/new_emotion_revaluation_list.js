@@ -1,0 +1,17 @@
+$(document).ready(function(){
+    emotions = JSON.parse(localStorage.getItem('emotions'));
+
+    if(emotions) {
+        var $emotionsRevaluationList = $('#emotions-revaluation');
+
+        $.each(emotions, function(index, value) {
+            $emotionsRevaluationList.append('<li class="ui-li-has-count">' +
+                '<a href="/smartdiary/web/app_dev.php/rivalutazione-emozioni/nuovo/'+index+'"' +
+                'id="emotion_revaluation-'+ index +'" class="ui-btn ui-btn-icon-right ui-icon-carat-r"' +
+                'data-ajax="false">' +
+                value['emotion_label'] +
+                '<span class="ui-li-count"><strike>'+ value['strenght'] +'</strike> - ' + value['strenght_revaluation']
+                + '</span></a></li>');
+        });
+    }
+});

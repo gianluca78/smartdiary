@@ -1,0 +1,3 @@
+SmartdiaryEmotionRevaluationBundle_EmotionRevaluationController:
+    resource: "@SmartdiaryEmotionRevaluationBundle/Controller/EmotionRevaluationController.php"
+    type: annotation

@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Rivalutazione delle emozioni{% endblock %}
+{% block page_title %}Rivaluatione delle emozioni{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryemotionrevaluation/js/new_emotion_revaluation_list.js') }}"></script>
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiary_new') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="description">
+        Valuta nuovamente l'intensità delle tue emozioni dopo avere inserito i pensieri utili.
+    </div>
+
+    <ul id="emotions-revaluation" data-role="listview">
+    </ul>
+
+{% endblock %}

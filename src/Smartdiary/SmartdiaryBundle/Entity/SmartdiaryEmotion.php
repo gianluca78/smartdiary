@@ -44,6 +44,13 @@ class SmartdiaryEmotion
     private $strenght;
 
     /**
+     * @var string $strenghtRevaluation
+     *
+     * @ORM\Column(name="strenght_revaluation", type="integer")
+     */
+    private $strenghtRevaluation;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Smartdiary\SmartdiaryBundle\Entity\Smartdiary", inversedBy="emotions")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */

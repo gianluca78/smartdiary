@@ -1,0 +1,11 @@
+parameters:
+#    smartdiary_emotion_revaluation.example.class: Smartdiary\EmotionRevaluationBundle\Example
+
+services:
+    smartdiary_emotion_revaluation.form.type.emotion_revaluation:
+        class: Smartdiary\EmotionRevaluationBundle\Form\Type\EmotionRevaluationType
+        tags:
+            - { name: form.type, alias: emotion_revaluation }
+
+    smartdiary_user.create_emotion_revaluation_form_handler:
+            class: Smartdiary\EmotionRevaluationBundle\Form\Handler\CreateEmotionRevaluationFormHandler

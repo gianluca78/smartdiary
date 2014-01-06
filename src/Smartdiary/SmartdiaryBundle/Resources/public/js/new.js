@@ -14,4 +14,11 @@ $(document).ready(function(){
         $('#automatic_negative_thought a').removeClass('ui-icon-carat-r');
         $('#automatic_negative_thought a').addClass('ui-icon-check');
     }
+
+    $.each(JSON.parse(localStorage.getItem('ants')), function(index, value) {
+        if(value['apt']) {
+            $('#apt a').removeClass('ui-icon-carat-r');
+            $('#apt a').addClass('ui-icon-check');
+        }
+    });
 });

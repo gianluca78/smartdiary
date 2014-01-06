@@ -7,6 +7,7 @@ $(document).on( 'submit','form', function(event){
         emotions.push( {
             'emotion_id' : $('#emotion_detail_emotionId').val(),
             'strenght': $('#emotion_detail_strenght').val(),
+            'strenght_revaluation' : '',
             'emotion_label' : $('#emotion_detail_emotionLabel').val() }
         );
 
