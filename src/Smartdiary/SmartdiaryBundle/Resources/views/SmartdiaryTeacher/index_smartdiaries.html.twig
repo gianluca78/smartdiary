@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Insegnante{% endblock %}
+{% block page_title %}Insegnante{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiary_new') }}" data-icon="plus" data-ajax="false">Nuovo diario</a>
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#" data-icon="grid" data-ajax="false">Problemi</a></li>
+            <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexstudents') }}" data-icon="user" data-ajax="false">Studenti</a></li>
+            <li><a href="#" data-icon="bars" class="ui-btn-active" data-ajax="false">Diari</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <ul data-role="listview">
+        {% for smartdiary in smartdiaries %}
+        <li><a href="{{ path('smartdiary_smartdiary_smartdiary_view', { 'id': smartdiary.id }) }}" data-ajax="false">
+            Diario creato il {{ smartdiary.createdAt|date("d/m/Y") }} alle {{ smartdiary.createdAt|date("h:i") }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

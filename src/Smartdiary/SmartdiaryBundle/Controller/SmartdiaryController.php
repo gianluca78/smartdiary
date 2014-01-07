@@ -4,7 +4,8 @@ namespace Smartdiary\SmartdiaryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Request,
-    Symfony\Component\HttpFoundation\Response;
+    Symfony\Component\HttpFoundation\Response,
+    Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
@@ -18,6 +19,25 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
  */
 class SmartdiaryController extends Controller
 {
+    /**
+     * @Route("/")
+     * @Method({"GET"})
+     *
+     */
+    public function indexAction()
+    {
+        if($this->get('security.context')->isGranted('ROLE_TEACHER'))
+        {
+            $this->forward($this->indexTeacherAction());
+        }
+
+        if($this->get('security.context')->isGranted('ROLE_TEACHER'))
+        {
+            $this->forward($this->indexStudentAction());
+        }
+
+    }
+
     /**
      * @Route("/nuovo")
      * @Method({"GET"})
@@ -51,5 +71,18 @@ class SmartdiaryController extends Controller
         return new Response();
     }
 
+    /**
+     * @Route("/visualizza/{id}", requirements={"id" = "\d+"})
+     * @Method({"GET"})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewAction(Request $request, $id)
+    {
+        $smartdiary = $this->getDoctrine()->getRepository('SmartdiarySmartdiaryBundle:Smartdiary')->find($id);
 
+        return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:view.html.twig', array(
+            'smartdiary' => $smartdiary
+        ));
+    }
 }

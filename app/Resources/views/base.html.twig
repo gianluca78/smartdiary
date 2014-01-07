@@ -21,7 +21,11 @@
         <div role="main" class="ui-content">
             {% block body %}{% endblock %}
         </div>
-        <div data-role="footer"><h4>2012 - {{ "now"|date('Y') }} Progetto Edutainment</h4></div>
+        <div data-role="footer">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{ path('logout') }}" data-icon="power" data-direction="reverse" data-ajax="false">Esci</a>
+            {% endif %}
+        </div>
     </div>
 
     <script type="text/javascript">

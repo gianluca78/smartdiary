@@ -85,7 +85,7 @@ class User implements UserInterface, \Serializable {
     /**
      * @var string $password
      *
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
@@ -106,7 +106,7 @@ class User implements UserInterface, \Serializable {
     /**
      * @var string $teacherEmail
      *
-     * @ORM\Column(name="teacher_email", type="string", length=255, unique=true, nullable=true)
+     * @ORM\Column(name="teacher_email", type="string", length=255, nullable=true)
      */
     private $teacher_email;
 
@@ -203,7 +203,7 @@ class User implements UserInterface, \Serializable {
 
     public function getRoles()
     {
-        return array((string)$this->getRole());
+        return array($this->getRole()->getRole());
     }
 
     /**

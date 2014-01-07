@@ -44,6 +44,11 @@ class SmartdiarySensation
     private $strenght;
 
     /**
+     * @ORM\OneToOne(targetEntity="Sensation", cascade={"persist", "remove"})
+     */
+    private $sensation;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="smartdiary_sensation")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */
@@ -65,6 +70,10 @@ class SmartdiarySensation
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
+
+    public function __toString() {
+        return $this->sensation->getLabel();
+    }
 
     /**
      * Get id
@@ -212,5 +221,28 @@ class SmartdiarySensation
     public function getSmartdiary()
     {
         return $this->smartdiary;
+    }
+
+    /**
+     * Set sensation
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\Sensation $sensation
+     * @return SmartdiarySensation
+     */
+    public function setSensation(\Smartdiary\SmartdiaryBundle\Entity\Sensation $sensation = null)
+    {
+        $this->sensation = $sensation;
+
+        return $this;
+    }
+
+    /**
+     * Get sensation
+     *
+     * @return \Smartdiary\SmartdiaryBundle\Entity\Sensation 
+     */
+    public function getSensation()
+    {
+        return $this->sensation;
     }
 }

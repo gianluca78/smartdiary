@@ -51,6 +51,11 @@ class SmartdiaryEmotion
     private $strenghtRevaluation;
 
     /**
+     * @ORM\OneToOne(targetEntity="Emotion", cascade={"persist", "remove"})
+     */
+    private $emotion;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="smartdiary_emotion")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */
@@ -73,6 +78,10 @@ class SmartdiaryEmotion
      */
     private $updatedAt;
 
+    public function __toString()
+    {
+        return $this->emotion->getLabel();
+    }
 
     /**
      * Get id
@@ -243,5 +252,28 @@ class SmartdiaryEmotion
     public function getStrenghtRevaluation()
     {
         return $this->strenghtRevaluation;
+    }
+
+    /**
+     * Set emotion
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\Emotion $emotion
+     * @return SmartdiaryEmotion
+     */
+    public function setEmotion(\Smartdiary\SmartdiaryBundle\Entity\Emotion $emotion = null)
+    {
+        $this->emotion = $emotion;
+
+        return $this;
+    }
+
+    /**
+     * Get emotion
+     *
+     * @return \Smartdiary\SmartdiaryBundle\Entity\Smartdiary 
+     */
+    public function getEmotion()
+    {
+        return $this->emotion;
     }
 }

@@ -15,6 +15,19 @@ use Smartdiary\SmartdiaryBundle\Entity\Smartdiary,
 
 class SmartdiaryRepository extends EntityRepository
 {
+    public function getSmartdiaryByUserIdOrderedByCreationDate($userId)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT s FROM SmartdiarySmartdiaryBundle:Smartdiary s
+                WHERE s.userId = :userId
+                ORDER BY s.createdAt DESC
+                '
+            )
+            ->setParameter('userId', $userId)
+            ->getResult();
+    }
+
     public function saveSmartdiaryFromArray(array $data)
     {
         $antecedentWhere = $this->getEntityManager()
@@ -63,24 +76,31 @@ class SmartdiaryRepository extends EntityRepository
         }
 
         foreach(json_decode($data['emotions'], true) as $dataEmotion) {
-            $emotion = new SmartdiaryEmotion();
-            $emotion->setSmartdiary($smartdiary);
-            $emotion->setEmotionId($dataEmotion['emotion_id']);
-            $emotion->setStrenght($dataEmotion['strenght']);
-            $emotion->setStrenghtRevaluation($dataEmotion['strenght_revaluation']);
+            $emotion = $this->getEntityManager()
+                ->getRepository('SmartdiarySmartdiaryBundle:Emotion')
+                ->find($dataEmotion['emotion_id']);
 
-            $this->getEntityManager()->persist($emotion);
+            $smartdiaryEmotion = new SmartdiaryEmotion();
+            $smartdiaryEmotion->setSmartdiary($smartdiary);
+            $smartdiaryEmotion->setEmotion($emotion);
+            $smartdiaryEmotion->setStrenght($dataEmotion['strenght']);
+            $smartdiaryEmotion->setStrenghtRevaluation($dataEmotion['strenght_revaluation']);
+
+            $this->getEntityManager()->persist($smartdiaryEmotion);
             $this->getEntityManager()->flush();
         }
 
         foreach(json_decode($data['sensations'], true) as $dataSensation) {
-            $sensation = new SmartdiarySensation();
-            $sensation->setSmartdiaryId($smartdiary->getId());
-            $sensation->setSmartdiary($smartdiary);
-            $sensation->setSensationId($dataSensation['sensation_id']);
-            $sensation->setStrenght($dataSensation['strenght']);
+            $sensation = $this->getEntityManager()
+                ->getRepository('SmartdiarySmartdiaryBundle:Sensation')
+                ->find($dataSensation['sensation_id']);
 
-            $this->getEntityManager()->persist($sensation);
+            $smartdiarySensation = new SmartdiarySensation();
+            $smartdiarySensation->setSmartdiary($smartdiary);
+            $smartdiarySensation->setSensation($sensation);
+            $smartdiarySensation->setStrenght($dataSensation['strenght']);
+
+            $this->getEntityManager()->persist($smartdiarySensation);
             $this->getEntityManager()->flush();
         }
     }
