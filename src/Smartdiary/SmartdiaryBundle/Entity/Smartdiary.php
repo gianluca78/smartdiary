@@ -73,13 +73,6 @@ class Smartdiary
     private $behavior;
 
     /**
-     * @var string $consequenceDetail
-     *
-     * @ORM\Column(name="consequence_detail", type="string", length=255)
-     */
-    private $consequence;
-
-    /**
      * @var int $userId
      *
      * @ORM\Column(name="user_id", type="integer", nullable=false)
@@ -133,12 +126,12 @@ class Smartdiary
     private $automaticNegativeThoughts;
 
     /**
-     * @ORM\OneToMany(targetEntity="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryEmotion", mappedBy="smartdiary")
+     * @ORM\OneToMany(targetEntity="SmartdiaryEmotion", mappedBy="smartdiary")
      */
     private $emotions;
 
     /**
-     * @ORM\OneToMany(targetEntity="Smartdiary\SmartdiaryBundle\Entity\SmartdiarySensation", mappedBy="smartdiary")
+     * @ORM\OneToMany(targetEntity="SmartdiarySensation", mappedBy="smartdiary")
      */
     private $sensations;
 
@@ -319,29 +312,6 @@ class Smartdiary
     public function getBehavior()
     {
         return $this->behavior;
-    }
-
-    /**
-     * Set consequence
-     *
-     * @param string $consequence
-     * @return Smartdiary
-     */
-    public function setConsequence($consequence)
-    {
-        $this->consequence = $consequence;
-
-        return $this;
-    }
-
-    /**
-     * Get consequence
-     *
-     * @return string 
-     */
-    public function getConsequence()
-    {
-        return $this->consequence;
     }
 
     /**

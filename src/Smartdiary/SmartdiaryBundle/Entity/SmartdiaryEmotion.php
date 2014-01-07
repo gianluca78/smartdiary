@@ -51,7 +51,7 @@ class SmartdiaryEmotion
     private $strenghtRevaluation;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smartdiary\SmartdiaryBundle\Entity\Smartdiary", inversedBy="emotions")
+     * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="smartdiary_emotion")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */
     private $smartdiary;
@@ -220,5 +220,28 @@ class SmartdiaryEmotion
     public function getSmartdiary()
     {
         return $this->smartdiary;
+    }
+
+    /**
+     * Set strenghtRevaluation
+     *
+     * @param integer $strenghtRevaluation
+     * @return SmartdiaryEmotion
+     */
+    public function setStrenghtRevaluation($strenghtRevaluation)
+    {
+        $this->strenghtRevaluation = $strenghtRevaluation;
+
+        return $this;
+    }
+
+    /**
+     * Get strenghtRevaluation
+     *
+     * @return integer 
+     */
+    public function getStrenghtRevaluation()
+    {
+        return $this->strenghtRevaluation;
     }
 }

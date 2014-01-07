@@ -10,7 +10,7 @@ class EmotionRevaluationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->setAction($options['action'])
-            ->add('strenght', null, array(
+            ->add('strenghtRevaluation', null, array(
                 'label' => 'Intensità',
                 'attr' => array(
                     'value' => 0

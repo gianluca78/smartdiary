@@ -52,7 +52,7 @@ class SmartdiaryAutomaticNegativeThought
     private $strenght;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smartdiary\SmartdiaryBundle\Entity\Smartdiary", inversedBy="SmartdiaryAutomaticNegativeThoughts")
+     * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="smartdiary_automatic_negative_thought")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */
     private $smartdiary;

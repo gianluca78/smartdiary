@@ -10,8 +10,9 @@ $(document).ready(function(){
                 'id="emotion_revaluation-'+ index +'" class="ui-btn ui-btn-icon-right ui-icon-carat-r"' +
                 'data-ajax="false">' +
                 value['emotion_label'] +
-                '<span class="ui-li-count"><strike>'+ value['strenght'] +'</strike> - ' + value['strenght_revaluation']
-                + '</span></a></li>');
+                '<span class="ui-li-count"><span class="red">'+ value['strenght'] +'</span> - ' +
+                '<span class="green">' + value['strenght_revaluation']
+                + '</span></span></a></li>');
         });
     }
 });

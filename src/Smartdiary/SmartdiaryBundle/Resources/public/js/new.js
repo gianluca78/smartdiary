@@ -1,5 +1,5 @@
-$(document).ready(function(){
-    if(localStorage.getItem("antecedent_when")
+$(document).ready(function () {
+    if (localStorage.getItem("antecedent_when")
         && localStorage.getItem("antecedent_where_id")
         && localStorage.getItem("antecedent_where_detail")
         && localStorage.getItem("antecedent_who_id")
@@ -10,12 +10,12 @@ $(document).ready(function(){
         $('#antecedent a').addClass('ui-icon-check');
     }
 
-    if(localStorage.getItem("ants") && localStorage.getItem('ants')!='[]') {
+    if (localStorage.getItem("ants") && localStorage.getItem('ants') != '[]') {
         $('#automatic_negative_thought a').removeClass('ui-icon-carat-r');
         $('#automatic_negative_thought a').addClass('ui-icon-check');
     }
 
-    if(localStorage.getItem("behavior")
+    if (localStorage.getItem("behavior")
         && localStorage.getItem("emotions") != '[]'
         && localStorage.getItem("sensations") != '[]'
         ) {
@@ -23,15 +23,15 @@ $(document).ready(function(){
         $('#consequence a').addClass('ui-icon-check');
     }
 
-    $.each(JSON.parse(localStorage.getItem('ants')), function(index, value) {
-        if(value['apt']) {
+    $.each(JSON.parse(localStorage.getItem('ants')), function (index, value) {
+        if (value['apt']) {
             $('#apt a').removeClass('ui-icon-carat-r');
             $('#apt a').addClass('ui-icon-check');
         }
     });
 
-    $.each(JSON.parse(localStorage.getItem('emotions')), function(index, value) {
-        if(value['strenght_revaluation']) {
+    $.each(JSON.parse(localStorage.getItem('emotions')), function (index, value) {
+        if (value['strenght_revaluation']) {
             $('#emotion-revaluation a').removeClass('ui-icon-carat-r');
             $('#emotion-revaluation a').addClass('ui-icon-check');
         }
@@ -39,13 +39,24 @@ $(document).ready(function(){
 });
 
 function saveSmartdiary() {
-    if($('#antecedent a').hasClass('ui-icon-check') &&
+    if ($('#antecedent a').hasClass('ui-icon-check') &&
         $('#automatic_negative_thought a').hasClass('ui-icon-check') &&
         $('#apt a').hasClass('ui-icon-check') &&
         $('#consequence a').hasClass('ui-icon-check') &&
         $('#emotion-revaluation a').hasClass('ui-icon-check')
         ) {
-            alert('miao');
+            $.ajax({
+                type: "POST",
+                url: "/smartdiary/web/app_dev.php/smartdiary/salva",
+                data: { "smartdiaryData" : JSON.stringify(localStorage) }
+            })
+            .done(function( msg ) {
+                //localStorage.clear();
+                $('ul').before('<div class="flash-success">Il salvataggio è avvenuto con successo</div>');
+            })
+            .error(function (xhr, ajaxOptions, thrownError){
+                alert(console.log(thrownError));
+            });
     }
     else {
         $('ul').before('<div class="flash-error">Impossibile salvare il diario: per favore compilare tutti ' +

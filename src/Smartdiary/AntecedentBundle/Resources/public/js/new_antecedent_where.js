@@ -1,3 +1,9 @@
+$(document).ready(function(){
+    if(localStorage.getItem('antecedent_where_detail')) {
+        $('#antecedent_where_detail_antecedentWhereDetail').val(localStorage.getItem('antecedent_where_detail'));
+    }
+});
+
 $(document).on( 'submit','form', function(event){
     localStorage.setItem("antecedent_where_detail", $('#antecedent_where_detail_antecedentWhereDetail').val());
     localStorage.setItem("antecedent_where_id", $('#antecedent_where_detail_antecedentWhereId').val());
