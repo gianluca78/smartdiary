@@ -28,7 +28,7 @@ class SmartdiaryRepository extends EntityRepository
             ->getResult();
     }
 
-    public function saveSmartdiaryFromArray(array $data)
+    public function saveSmartdiaryFromArray(array $data, \Smartdiary\UserBundle\Entity\User $user)
     {
         $antecedentWhere = $this->getEntityManager()
             ->getRepository('SmartdiarySmartdiaryBundle:AntecedentWhere')
@@ -38,12 +38,7 @@ class SmartdiaryRepository extends EntityRepository
             ->getRepository('SmartdiarySmartdiaryBundle:AntecedentWho')
             ->find($data['antecedent_who_id']);
 
-        $user = $this->getEntityManager()
-            ->getRepository('SmartdiaryUserBundle:User')
-            ->find(1);
-
         $smartdiary = new Smartdiary();
-        $smartdiary->setUserId(1);
         $smartdiary->setUser($user);
         $smartdiary->setAntecedentWhereDetail($data['antecedent_where_detail']);
         $smartdiary->setAntecedentWhere($antecedentWhere);
@@ -57,21 +52,22 @@ class SmartdiaryRepository extends EntityRepository
         $this->getEntityManager()->flush();
 
         foreach(json_decode($data['ants'], true) as $dataAnt) {
-            $automaticNegativeThought = new SmartdiaryAutomaticNegativeThought();
-
-            $automaticNegativeThought->setSmartdiary($smartdiary);
-            $automaticNegativeThought->setAnt($dataAnt['ant']);
-            $automaticNegativeThought->setStrenght($dataAnt['strenght']);
-
-            $this->getEntityManager()->persist($automaticNegativeThought);
-            $this->getEntityManager()->flush();
-
             $alternativePositiveThought = new SmartdiaryAlternativePositiveThought();
             $alternativePositiveThought->setSmartdiary($smartdiary);
             $alternativePositiveThought->setApt($dataAnt['apt']);
             $alternativePositiveThought->setStrenght($dataAnt['apt_strenght']);
 
             $this->getEntityManager()->persist($alternativePositiveThought);
+            $this->getEntityManager()->flush();
+
+            $automaticNegativeThought = new SmartdiaryAutomaticNegativeThought();
+
+            $automaticNegativeThought->setSmartdiary($smartdiary);
+            $automaticNegativeThought->setAlternativePositiveThought($alternativePositiveThought);
+            $automaticNegativeThought->setAnt($dataAnt['ant']);
+            $automaticNegativeThought->setStrenght($dataAnt['strenght']);
+
+            $this->getEntityManager()->persist($automaticNegativeThought);
             $this->getEntityManager()->flush();
         }
 

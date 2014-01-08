@@ -25,10 +25,12 @@
     <h4>Cosa stavi facendo o pensando prima di provare disagio?</h4>
     <p>{{ smartdiary.antecedentWhat }}</p>
 
-    <h3>Pensieri automatici negativi</h3>
+    <h3>Pensieri</h3>
     <h4>Che cosa ho pensato?</h4>
     {% for ant in smartdiary.automaticNegativeThoughts %}
-    <p>{{ ant.ant }} ({{ ant.strenght }}%)</p>
+    <p><span class="red">{{ ant.ant }}</span> -
+        <span class="green">{{ ant.alternativePositiveThought }}</span>
+    </p>
     {% endfor %}
 
     <h3>Conseguenze</h3>
@@ -46,8 +48,4 @@
     {% for sensation in smartdiary.sensations %}
         <p>{{ sensation }} ({{ sensation.strenght }}%)</p>
     {% endfor %}
-
-    <h4>Pensieri alternativi funzionali</h4>
-
-
 {% endblock %}

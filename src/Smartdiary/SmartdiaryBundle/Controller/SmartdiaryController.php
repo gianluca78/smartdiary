@@ -66,7 +66,7 @@ class SmartdiaryController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $em->getRepository('SmartdiarySmartdiaryBundle:Smartdiary')
-            ->saveSmartdiaryFromArray($smartdiaryData);
+            ->saveSmartdiaryFromArray($smartdiaryData, $this->getUser());
 
         return new Response();
     }

@@ -4,16 +4,14 @@ namespace Smartdiary\SmartdiaryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Security\Core\User\UserInterface,
-    Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
- * Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought
+ * Smartdiary\SmartdiaryBundle\Entity\TeacherProblem
  *
- * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThoughtRepository")
- * @ORM\Table(name="smartdiary_alternative_positive_thought")
+ * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituationRepository")
+ * @ORM\Table(name="user_problematic_situation")
  */
-class SmartdiaryAlternativePositiveThought
+class UserProblematicSituation
 {
     /**
      * @ORM\Id
@@ -23,39 +21,33 @@ class SmartdiaryAlternativePositiveThought
     private $id;
 
     /**
-     * @var string $smartdiaryId
+     * @var int $userId
      *
-     * @ORM\Column(name="smartdiary_id", type="integer")
+     * @ORM\Column(name="user_id", type="integer")
      */
-    private $smartdiaryId;
+    private $userId;
 
     /**
-     * @var string $apt
+     * @var string $title
      *
-     * @ORM\Column(name="ant", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=50)
      */
-    private $apt;
+    private $title;
+
+    /**
+     * @var string $description
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
 
     /**
      * @var string $slug
      *
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Gedmo\Slug(fields={"apt"})
+     * @Gedmo\Slug(fields={"title"})
      */
     private $slug;
-
-    /**
-     * @var string $strenght
-     *
-     * @ORM\Column(name="strenght", type="integer")
-     */
-    private $strenght;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Smartdiary\SmartdiaryBundle\Entity\Smartdiary", inversedBy="SmartdiaryAlternativePositiveThoughts")
-     * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
-     */
-    private $smartdiary;
 
     /**
      * @var datetime $createdAt
@@ -76,7 +68,7 @@ class SmartdiaryAlternativePositiveThought
 
     public function __toString()
     {
-        return $this->apt;
+        return $this->title;
     }
 
     /**
@@ -90,56 +82,79 @@ class SmartdiaryAlternativePositiveThought
     }
 
     /**
-     * Set smartdiaryId
+     * Set userId
      *
-     * @param int $smartdiaryId
-     * @return AutomaticNegativeThought
+     * @param integer $userId
+     * @return UserProblematicSituation
      */
-    public function setSmartdiaryId($smartdiaryId)
+    public function setUserId($userId)
     {
-        $this->smartdiaryId = $smartdiaryId;
+        $this->userId = $userId;
 
         return $this;
     }
 
     /**
-     * Get smartdiaryId
+     * Get userId
      *
-     * @return \int 
+     * @return integer 
      */
-    public function getSmartdiaryId()
+    public function getUserId()
     {
-        return $this->smartdiaryId;
+        return $this->userId;
     }
 
     /**
-     * Set apt
+     * Set title
      *
-     * @param string $apt
-     * @return SmartdiaryAlternativePositiveThought
+     * @param string $title
+     * @return UserProblematicSituation
      */
-    public function setApt($apt)
+    public function setTitle($title)
     {
-        $this->apt = $apt;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get apt
+     * Get title
      *
      * @return string 
      */
-    public function getApt()
+    public function getTitle()
     {
-        return $this->apt;
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return UserProblematicSituation
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
      * Set slug
      *
      * @param string $slug
-     * @return AutomaticNegativeThought
+     * @return UserProblematicSituation
      */
     public function setSlug($slug)
     {
@@ -159,33 +174,10 @@ class SmartdiaryAlternativePositiveThought
     }
 
     /**
-     * Set strenght
-     *
-     * @param $strenght
-     * @return AutomaticNegativeThought
-     */
-    public function setStrenght($strenght)
-    {
-        $this->strenght = $strenght;
-
-        return $this;
-    }
-
-    /**
-     * Get strenght
-     *
-     * @return \int 
-     */
-    public function getStrenght()
-    {
-        return $this->strenght;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return AutomaticNegativeThought
+     * @return UserProblematicSituation
      */
     public function setCreatedAt($createdAt)
     {
@@ -208,7 +200,7 @@ class SmartdiaryAlternativePositiveThought
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return AutomaticNegativeThought
+     * @return UserProblematicSituation
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -231,7 +223,7 @@ class SmartdiaryAlternativePositiveThought
      * Set smartdiary
      *
      * @param \Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiary
-     * @return AutomaticNegativeThought
+     * @return UserProblematicSituation
      */
     public function setSmartdiary(\Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiary = null)
     {

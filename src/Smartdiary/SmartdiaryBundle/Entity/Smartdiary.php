@@ -5,8 +5,6 @@ namespace Smartdiary\SmartdiaryBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection,
     Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Security\Core\User\UserInterface,
-    Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Smartdiary\SmartdiaryBundle\Entity\Smartdiary
@@ -80,6 +78,13 @@ class Smartdiary
     private $userId;
 
     /**
+     * @var int $userProblematicSituationId
+     *
+     * @ORM\Column(name="user_problematic_situation_id", type="integer", nullable=true)
+     */
+    private $userProblematicSituationId;
+
+    /**
      * @var datetime $createdAt
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -135,12 +140,18 @@ class Smartdiary
      */
     private $sensations;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="UserProblematicSituation", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="user_problematic_situation_id", referencedColumnName="id")
+     */
+    private $userProblematicSituations;
 
     public function __construct()
     {
         $this->automaticNegativeThoughts = new ArrayCollection();
         $this->emotions = new ArrayCollection();
         $this->sensations = new ArrayCollection();
+        $this->userProblematicSituations = new ArrayCollection();
     }
 
     /**
@@ -549,5 +560,51 @@ class Smartdiary
     public function getSensations()
     {
         return $this->sensations;
+    }
+
+    /**
+     * Set userProblematicSituationId
+     *
+     * @param integer $userProblematicSituationId
+     * @return Smartdiary
+     */
+    public function setUserProblematicSituationId($userProblematicSituationId)
+    {
+        $this->userProblematicSituationId = $userProblematicSituationId;
+
+        return $this;
+    }
+
+    /**
+     * Get userProblematicSituationId
+     *
+     * @return integer 
+     */
+    public function getUserProblematicSituationId()
+    {
+        return $this->userProblematicSituationId;
+    }
+
+    /**
+     * Set userProblematicSituations
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $userProblematicSituations
+     * @return Smartdiary
+     */
+    public function setUserProblematicSituations(\Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $userProblematicSituations = null)
+    {
+        $this->userProblematicSituations = $userProblematicSituations;
+
+        return $this;
+    }
+
+    /**
+     * Get userProblematicSituations
+     *
+     * @return \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation 
+     */
+    public function getUserProblematicSituations()
+    {
+        return $this->userProblematicSituations;
     }
 }

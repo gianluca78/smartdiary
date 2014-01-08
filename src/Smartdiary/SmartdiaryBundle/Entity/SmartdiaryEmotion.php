@@ -51,7 +51,8 @@ class SmartdiaryEmotion
     private $strenghtRevaluation;
 
     /**
-     * @ORM\OneToOne(targetEntity="Emotion", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Emotion", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="emotion_id", referencedColumnName="id")
      */
     private $emotion;
 

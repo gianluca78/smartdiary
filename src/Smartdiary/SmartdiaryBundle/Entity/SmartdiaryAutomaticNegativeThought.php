@@ -30,6 +30,13 @@ class SmartdiaryAutomaticNegativeThought
     private $smartdiaryId;
 
     /**
+     * @var int $smartdiaryAlternativePositiveThoughtId
+     *
+     * @ORM\Column(name="smartdiary_alternative_positive_thought_id", type="integer")
+     */
+    private $smartdiaryAlternativePositiveThoughtId;
+
+    /**
      * @var string $ant
      *
      * @ORM\Column(name="ant", type="string", length=255)
@@ -50,6 +57,14 @@ class SmartdiaryAutomaticNegativeThought
      * @ORM\Column(name="strenght", type="integer")
      */
     private $strenght;
+
+    /**
+     * @var SmartdiaryAlternativePositiveThought $alternativePositiveThought
+     *
+     * @ORM\OneToOne(targetEntity="SmartdiaryAlternativePositiveThought", mappedBy="smartdiary_automatic_negative_thought")
+     * @ORM\JoinColumn(name="smartdiary_alternative_positive_thought_id", referencedColumnName="id")
+     **/
+    private $alternativePositiveThought;
 
     /**
      * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="smartdiary_automatic_negative_thought")
@@ -248,5 +263,51 @@ class SmartdiaryAutomaticNegativeThought
     public function getSmartdiary()
     {
         return $this->smartdiary;
+    }
+
+    /**
+     * Set smartdiaryAlternativePositiveThoughtId
+     *
+     * @param integer $smartdiaryAlternativePositiveThoughtId
+     * @return SmartdiaryAutomaticNegativeThought
+     */
+    public function setSmartdiaryAlternativePositiveThoughtId($smartdiaryAlternativePositiveThoughtId)
+    {
+        $this->smartdiaryAlternativePositiveThoughtId = $smartdiaryAlternativePositiveThoughtId;
+
+        return $this;
+    }
+
+    /**
+     * Get smartdiaryAlternativePositiveThoughtId
+     *
+     * @return integer 
+     */
+    public function getSmartdiaryAlternativePositiveThoughtId()
+    {
+        return $this->smartdiaryAlternativePositiveThoughtId;
+    }
+
+    /**
+     * Set alternativePositiveThought
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThought $alternativePositiveThought
+     * @return SmartdiaryAutomaticNegativeThought
+     */
+    public function setAlternativePositiveThought(\Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThought $alternativePositiveThought = null)
+    {
+        $this->alternativePositiveThought = $alternativePositiveThought;
+
+        return $this;
+    }
+
+    /**
+     * Get alternativePositiveThought
+     *
+     * @return \Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThought 
+     */
+    public function getAlternativePositiveThought()
+    {
+        return $this->alternativePositiveThought;
     }
 }

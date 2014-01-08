@@ -3,7 +3,8 @@ namespace Smartdiary\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Security\Core\User\UserInterface,
+use Doctrine\Common\Collections\ArrayCollection,
+    Symfony\Component\Security\Core\User\UserInterface,
     Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
@@ -135,10 +136,16 @@ class User implements UserInterface, \Serializable {
      */
     private $role;
 
+    /**
+     * @ORM\OneToMany(targetEntity="\Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation", mappedBy="user")
+     */
+    private $userProblematicSituations;
+
     public function __construct()
     {
         $this->isActive = true;
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->userProblematicSituations = new ArrayCollection();
     }
 
     /**
@@ -462,5 +469,38 @@ class User implements UserInterface, \Serializable {
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * Add userProblematicSituations
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $userProblematicSituations
+     * @return User
+     */
+    public function addUserProblematicSituation(\Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $userProblematicSituations)
+    {
+        $this->userProblematicSituations[] = $userProblematicSituations;
+
+        return $this;
+    }
+
+    /**
+     * Remove userProblematicSituations
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $userProblematicSituations
+     */
+    public function removeUserProblematicSituation(\Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $userProblematicSituations)
+    {
+        $this->userProblematicSituations->removeElement($userProblematicSituations);
+    }
+
+    /**
+     * Get userProblematicSituations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserProblematicSituations()
+    {
+        return $this->userProblematicSituations;
     }
 }

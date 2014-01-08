@@ -44,7 +44,9 @@ class SmartdiarySensation
     private $strenght;
 
     /**
-     * @ORM\OneToOne(targetEntity="Sensation", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Sensation")
+     * @ORM\JoinColumn(name="sensation_id", referencedColumnName="id")
+     *
      */
     private $sensation;
 
