@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Studente{% endblock %}
+{% block page_title %}Studente{% endblock %}
+
+{% block header_buttons %}
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#" data-icon="grid" data-ajax="false" class="ui-btn-active" >Problemi</a></li>
+            <li><a href="{{ path('smartdiary_smartdiary_smartdiarystudent_indexstudentsmartdiaries') }}" data-icon="bars" data-ajax="false">Diari</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <ul data-role="listview">
+        {% for userProblematicSituation in userProblematicSituations %}
+        <li><a href="{{ path('smartdiary_smartdiary_smartdiarystudent_indexproblematicsituationsmartdiaries',
+            { 'slug' : userProblematicSituation.slug }) }}" data-ajax="false">{{ userProblematicSituation.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -144,7 +144,7 @@ class Smartdiary
      * @ORM\ManyToOne(targetEntity="UserProblematicSituation", inversedBy="smartdiaries")
      * @ORM\JoinColumn(name="user_problematic_situation_id", referencedColumnName="id")
      */
-    private $smartdiaryProblematicSituation;
+    private $smartdiaryUserProblematicSituation;
 
     public function __construct()
     {
@@ -585,25 +585,25 @@ class Smartdiary
     }
 
     /**
-     * Set smartdiaryProblematicSituation
+     * Set smartdiaryUserProblematicSituation
      *
-     * @param \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $smartdiaryProblematicSituation
+     * @param \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $smartdiaryUserProblematicSituation
      * @return Smartdiary
      */
-    public function setSmartdiaryProblematicSituation(\Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $smartdiaryProblematicSituation = null)
+    public function setSmartdiaryUserProblematicSituation(\Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $smartdiaryUserProblematicSituation = null)
     {
-        $this->smartdiaryProblematicSituation = $smartdiaryProblematicSituation;
+        $this->smartdiaryUserProblematicSituation = $smartdiaryUserProblematicSituation;
 
         return $this;
     }
 
     /**
-     * Get smartdiaryProblematicSituation
+     * Get smartdiaryUserProblematicSituation
      *
      * @return \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation 
      */
-    public function getSmartdiaryProblematicSituation()
+    public function getSmartdiaryUserProblematicSituation()
     {
-        return $this->smartdiaryProblematicSituation;
+        return $this->smartdiaryUserProblematicSituation;
     }
 }

@@ -2,6 +2,10 @@ SmartdiarySmartdiaryBundle_SmartdiaryController:
     resource: "@SmartdiarySmartdiaryBundle/Controller/SmartdiaryController.php"
     type: annotation
 
+SmartdiarySmartdiaryBundle_SmartdiaryStudentController:
+    resource: "@SmartdiarySmartdiaryBundle/Controller/SmartdiaryStudentController.php"
+    type: annotation
+
 SmartdiarySmartdiaryBundle_SmartdiaryTeacherController:
     resource: "@SmartdiarySmartdiaryBundle/Controller/SmartdiaryTeacherController.php"
     type: annotation

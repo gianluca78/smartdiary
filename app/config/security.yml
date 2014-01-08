@@ -50,3 +50,4 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/smartdiary/insegnante/*, roles: ROLE_TEACHER }
+        - { path: ^/smartdiary/studente/*, roles: ROLE_STUDENT }

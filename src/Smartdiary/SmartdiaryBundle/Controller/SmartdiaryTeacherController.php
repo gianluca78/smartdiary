@@ -58,10 +58,14 @@ class SmartdiaryTeacherController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexTeacherSmartdiariesAction()
+    public function indexTeacherSmartdiariesAction(Request $request)
     {
         $smartdiaries = $this->getDoctrine()->getRepository('SmartdiarySmartdiaryBundle:Smartdiary')
             ->getSmartdiaryByUserIdOrderedByCreationDate($this->getUser()->getId());
+
+        $request->getSession()->set('smartdiary_redirect_url', $this->generateUrl(
+                'smartdiary_smartdiary_smartdiaryteacher_indexteachersmartdiaries')
+        );
 
         return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryTeacher:index_smartdiaries.html.twig', array(
             'smartdiaries' => $smartdiaries
@@ -108,7 +112,7 @@ class SmartdiaryTeacherController extends Controller
 
         $smartdiaries = $this->getDoctrine()
             ->getRepository('SmartdiarySmartdiaryBundle:Smartdiary')
-            ->getSmartdiariesByUserProblematicSituationId($userProblemSituation->getId());
+            ->getSmartdiariesByUserProblematicSituationIdOrderedByUserSurnameName($userProblemSituation->getId());
 
         return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryTeacher:index_students_problematic_situation.html.twig',
             array(

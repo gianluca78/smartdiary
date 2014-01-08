@@ -28,7 +28,25 @@ class SmartdiaryRepository extends EntityRepository
             ->getResult();
     }
 
-    public function getSmartdiariesByUserProblematicSituationId($userProblematicSituationId)
+    public function getSmartdiariesByUserProblematicSituationIdUserIdOrderedByCreationDate(
+        $userProblematicSituationId,
+        $userId
+    )
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT s FROM SmartdiarySmartdiaryBundle:Smartdiary s
+                WHERE s.userProblematicSituationId = :userProblematicSituationId
+                AND s.userId = :userId
+                ORDER BY s.createdAt DESC
+                '
+            )
+            ->setParameter('userProblematicSituationId', $userProblematicSituationId)
+            ->setParameter('userId', $userId)
+            ->getResult();
+    }
+
+    public function getSmartdiariesByUserProblematicSituationIdOrderedByUserSurnameName($userProblematicSituationId)
     {
         return $this->getEntityManager()
             ->createQuery(
@@ -61,6 +79,14 @@ class SmartdiaryRepository extends EntityRepository
         $smartdiary->setAntecedentWhen($data['antecedent_when']);
         $smartdiary->setAntecedentWhat($data['antecedent_what']);
         $smartdiary->setBehavior($data['behavior']);
+
+        if($data['userProblematicSituationId']) {
+            $userProblematicSituation = $this->getEntityManager()
+                ->getRepository('SmartdiarySmartdiaryBundle:UserProblematicSituation')
+                ->find($data['userProblematicSituationId']);
+
+            $smartdiary->setSmartdiaryUserProblematicSituation($userProblematicSituation);
+        }
 
         $this->getEntityManager()->persist($smartdiary);
         $this->getEntityManager()->flush();

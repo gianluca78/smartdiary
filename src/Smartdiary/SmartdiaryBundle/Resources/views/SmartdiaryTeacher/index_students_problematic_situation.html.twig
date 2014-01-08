@@ -19,10 +19,13 @@
 {% endblock %}
 
 {% block body %}
-    <h2>{{ problemSituation.title }}</h2>
-    <p>{{ problemSituation.description }}</p>
+    <div class="ui-body ui-body-a ui-corner-all problem-description">
+        <h3>{{ problemSituation.title }}</h3>
+        <p>{{ problemSituation.description }}</p>
+    </div>
 
     <ul data-role="listview">
+        <li data-role="list-divider">Studenti</li>
         {% for smartdiary in smartdiaries %}
         <li><a href="{{ path('smartdiary_smartdiary_smartdiary_view', { 'id': smartdiary.id }) }}"
                data-ajax="false">{{ smartdiary.user.surname }} {{ smartdiary.user.name }}</a>

@@ -33,22 +33,38 @@ class SmartdiaryController extends Controller
 
         if($this->get('security.context')->isGranted('ROLE_STUDENT'))
         {
-            //$this->forward($this->indexStudentAction());
+            return $this->forward('SmartdiarySmartdiaryBundle:SmartdiaryStudent:indexProblematicSituations');
         }
-
     }
 
     /**
-     * @Route("/nuovo")
+     * @Route("/nuovo/{slugProblematicSituation}")
      * @Method({"GET"})
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction()
+    public function newAction(Request $request, $slugProblematicSituation=null)
     {
-        $referrer = $this->get('request')->server->get('HTTP_REFERER');
+        if($slugProblematicSituation) {
+            $userProblemSituation = $this->getDoctrine()
+                ->getRepository('SmartdiarySmartdiaryBundle:UserProblematicSituation')
+                ->findOneBySlug($slugProblematicSituation);
 
-        return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:new.html.twig', array('referrer' => $referrer));
+            if (!$userProblemSituation) {
+                throw $this->createNotFoundException(
+                    'No problem situation found for slug '.$slugProblematicSituation
+                );
+            }
+
+            $request->getSession()->set('userProblematicSituationId', $userProblemSituation->getId());
+        }
+        else {
+            $request->getSession()->set('userProblematicSituationId', null);
+        }
+
+        $backUrl = $request->getSession()->get('smartdiary_redirect_url');
+
+        return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:new.html.twig', array('backUrl' => $backUrl));
     }
 
     /**
@@ -64,13 +80,18 @@ class SmartdiaryController extends Controller
             throw new \Exception('this controller allows only ajax requests');
         }
 
+        $userProblematicSituationId = $request->getSession()->get('userProblematicSituationId');
+
         $smartdiaryData = json_decode($request->get('smartdiaryData'), true);
+        $smartdiaryData['userProblematicSituationId'] = $userProblematicSituationId;
 
         $em = $this->getDoctrine()->getManager();
         $em->getRepository('SmartdiarySmartdiaryBundle:Smartdiary')
             ->saveSmartdiaryFromArray($smartdiaryData, $this->getUser());
 
-        return new Response();
+        $request->getSession()->getFlashBag()->add('success', 'Il diario è stato salvato con successo');
+
+        return new Response($request->getSession()->get('smartdiary_redirect_url'));
     }
 
     /**

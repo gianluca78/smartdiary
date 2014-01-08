@@ -10,16 +10,16 @@ class ANTType extends AbstractType
     {
         $builder->setAction($options['action'])
             ->add('ant', 'textarea', array(
-                'label' => 'Il mio pensiero dannoso',
+                    'label' => 'Il mio pensiero dannoso',
                 )
             )
             ->add('strenght', null, array(
-                'label' => 'Intensità',
-                'attr' => array(
-                    'min' => 0,
-                    'max' => 100,
-                    'value' => 0,
-                ),
+                    'label' => 'Intensità della credenza (0-100)',
+                    'attr' => array(
+                        'min' => 0,
+                        'max' => 100,
+                        'value' => 0,
+                    ),
                 )
             )
             ->add('Salva', 'submit');

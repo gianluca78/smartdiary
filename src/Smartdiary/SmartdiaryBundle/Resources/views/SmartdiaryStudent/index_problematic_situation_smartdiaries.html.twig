@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Studente{% endblock %}
+{% block page_title %}Studente{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiarystudent_indexproblematicsituations') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+
+    <a href="{{ path('smartdiary_smartdiary_smartdiary_new', { 'slugProblematicSituation' : problemSituation.slug } ) }}"
+       data-icon="plus" data-ajax="false">Diario</a>
+
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#" data-icon="grid" data-ajax="false" class="ui-btn-active" >Problemi</a></li>
+            <li><a href="{{ path('smartdiary_smartdiary_smartdiarystudent_indexstudentsmartdiaries') }}"
+                   data-icon="bars" data-ajax="false">Diari</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="ui-body ui-body-a ui-corner-all problem-description">
+        <h3>{{ problemSituation.title }}</h3>
+        <p>{{ problemSituation.description }}</p>
+    </div>
+
+    <ul data-role="listview">
+        <li data-role="list-divider">Diari legati alla situazione problema</li>
+        {% for smartdiary in smartdiaries %}
+        <li><a href="{{ path('smartdiary_smartdiary_smartdiary_view', { 'id': smartdiary.id }) }}"
+               data-ajax="false">
+                Diario creato il {{ smartdiary.createdAt|date("d/m/Y") }} alle {{ smartdiary.createdAt|date("H:i") }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -52,7 +52,10 @@ function saveSmartdiary() {
             })
             .done(function( msg ) {
                 //localStorage.clear();
-                $('ul').before('<div class="flash-success">Il salvataggio è avvenuto con successo</div>');
+                //$('ul').before('<div class="flash-success">Il salvataggio è avvenuto con successo</div>');
+            })
+            .success(function(data, textStatus, jqXHR) {
+                    window.location.replace(data);
             })
             .error(function (xhr, ajaxOptions, thrownError){
                 alert(console.log(thrownError));

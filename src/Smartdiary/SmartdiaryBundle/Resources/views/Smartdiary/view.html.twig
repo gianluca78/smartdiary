@@ -9,7 +9,7 @@
 
 {% block body %}
     <div class="ui-body ui-body-a ui-corner-all">
-        <h2>Diario inserito il {{ smartdiary.createdAt|date("d/m/Y") }} alle {{ smartdiary.createdAt|date("h:i") }}
+        <h2>Diario inserito il {{ smartdiary.createdAt|date("d/m/Y") }} alle {{ smartdiary.createdAt|date("H:i") }}
             da {{ smartdiary.user.surname }} {{ smartdiary.user.name }}
         </h2>
     </div>
@@ -25,7 +25,7 @@
             <h4>Chi c'era?</h4>
             <p>{{ smartdiary.antecedentWho }} - {{ smartdiary.antecedentWhoDetail }}</p>
 
-            <h4>Cosa stavi facendo o pensando prima di provare disagio?</h4>
+            <h4>Cosa è successo?</h4>
             <p>{{ smartdiary.antecedentWhat }}</p>
     </div>
 

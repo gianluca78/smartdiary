@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Smartdiary - Insegnante{% endblock %}
-{% block page_title %}Insegnante{% endblock %}
+{% block title %}Smartdiary - Studente{% endblock %}
+{% block page_title %}Studente{% endblock %}
 
 {% block header_buttons %}
     <a href="{{ path('smartdiary_smartdiary_smartdiary_new') }}" data-icon="plus" data-ajax="false">Diario</a>
     <div data-role="navbar">
         <ul>
-            <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexproblematicsituations') }}" data-icon="grid" data-ajax="false">Problemi</a></li>
-            <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexstudents') }}" data-icon="user" data-ajax="false">Studenti</a></li>
+            <li><a href="{{ path('smartdiary_smartdiary_smartdiarystudent_indexproblematicsituations') }}"
+                   data-icon="grid" data-ajax="false">Problemi</a></li>
             <li><a href="#" data-icon="bars" class="ui-btn-active" data-ajax="false">Diari</a></li>
         </ul>
     </div>

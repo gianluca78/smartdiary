@@ -68,7 +68,7 @@ class UserProblematicSituation
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="Smartdiary", mappedBy="smartdiaryProblematicSituation")
+     * @ORM\OneToMany(targetEntity="Smartdiary", mappedBy="smartdiaryUserProblematicSituation")
      */
     private $smartdiaries;
 

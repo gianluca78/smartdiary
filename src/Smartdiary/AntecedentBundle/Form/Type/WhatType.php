@@ -11,7 +11,7 @@ class WhatType extends AbstractType
     {
         $builder->setAction($options['action'])
             ->add('antecedentWhat', 'textarea', array(
-                'label' => 'Cosa stavi facendo o pensando prima di provare disagio?',
+                'label' => 'Cosa è successo?',
                 )
             )
             ->add('Salva', 'submit');

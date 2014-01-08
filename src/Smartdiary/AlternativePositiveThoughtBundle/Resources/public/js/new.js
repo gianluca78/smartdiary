@@ -3,7 +3,7 @@ var antIndex = $('#apt_index').val();
 
 $(document).ready(function() {
     $('div .description').html('Il tuo pensiero negativo era: "'+ants[antIndex]['ant']+'". ' +
-        'Adesso riformula il pensiero negativo in uno utile che sia di aiuto per superare la situazione problematica.');
+        'Adesso riformula il pensiero negativo in uno più utile a superare la situazione problematica.');
 
     if(ants[antIndex]['apt']) {
         $('#apt_apt').val(ants[antIndex]['apt']);
