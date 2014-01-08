@@ -2,6 +2,11 @@ parameters:
 #    smartdiary_smartdiary.example.class: Smartdiary\SmartdiaryBundle\Example
 
 services:
-#    smartdiary_smartdiary.example:
-#        class: %smartdiary_smartdiary.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    smartdiary.form.type.user_problematic_situation:
+        class: Smartdiary\SmartdiaryBundle\Form\Type\UserProblematicSituationType
+        tags:
+            - { name: form.type, alias: user_problematic_situation }
+
+    smartdiary.create_user_problematic_situation_form_handler:
+        class: Smartdiary\SmartdiaryBundle\Form\Handler\CreateUserProblematicSituationFormHandler
+        arguments: [@doctrine.orm.entity_manager, @session]

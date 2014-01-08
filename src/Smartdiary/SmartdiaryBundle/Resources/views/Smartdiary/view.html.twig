@@ -4,48 +4,56 @@
 {% block page_title %}Visualizzazione diario{% endblock %}
 
 {% block header_buttons %}
-    <a href="#" data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+    <a href="{{ referrer }}" data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
 {% endblock %}
 
 {% block body %}
-    <h2>Diario inserito il {{ smartdiary.createdAt|date("d/m/Y") }} alle {{ smartdiary.createdAt|date("h:i") }}
-        da {{ smartdiary.user.surname }} {{ smartdiary.user.name }}
-    </h2>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <h2>Diario inserito il {{ smartdiary.createdAt|date("d/m/Y") }} alle {{ smartdiary.createdAt|date("h:i") }}
+            da {{ smartdiary.user.surname }} {{ smartdiary.user.name }}
+        </h2>
+    </div>
 
-    <h3>Situazione antecedente</h3>
-    <h4>Quando è successo?</h4>
-    <p>{{ smartdiary.antecedentWhen }}</p>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <h3>SITUAZIONE ANTECEDENTE</h3>
+            <h4>Quando è successo?</h4>
+            <p>{{ smartdiary.antecedentWhen }}</p>
 
-    <h4>Dove è successo?</h4>
-    <p>{{ smartdiary.antecedentWhere }} - {{ smartdiary.antecedentWhereDetail }}</p>
+            <h4>Dove è successo?</h4>
+            <p>{{ smartdiary.antecedentWhere }} - {{ smartdiary.antecedentWhereDetail }}</p>
 
-    <h4>Chi c'era?</h4>
-    <p>{{ smartdiary.antecedentWho }} - {{ smartdiary.antecedentWhoDetail }}</p>
+            <h4>Chi c'era?</h4>
+            <p>{{ smartdiary.antecedentWho }} - {{ smartdiary.antecedentWhoDetail }}</p>
 
-    <h4>Cosa stavi facendo o pensando prima di provare disagio?</h4>
-    <p>{{ smartdiary.antecedentWhat }}</p>
+            <h4>Cosa stavi facendo o pensando prima di provare disagio?</h4>
+            <p>{{ smartdiary.antecedentWhat }}</p>
+    </div>
 
-    <h3>Pensieri</h3>
-    <h4>Che cosa ho pensato?</h4>
-    {% for ant in smartdiary.automaticNegativeThoughts %}
-    <p><span class="red">{{ ant.ant }}</span> -
-        <span class="green">{{ ant.alternativePositiveThought }}</span>
-    </p>
-    {% endfor %}
-
-    <h3>Conseguenze</h3>
-    <h4>Come ho reagito?</h4>
-    <p>{{ smartdiary.behavior }}</p>
-
-    <h4>Che emozioni ho provato?</h4>
-    {% for emotion in smartdiary.emotions %}
-        <p>{{ emotion }}: <span class="red">{{ emotion.strenght }}%</span>
-            - <span class="green">{{ emotion.strenghtRevaluation }}%</span>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <h3>PENSIERI</h3>
+        <h4>Che cosa ho pensato?</h4>
+        {% for ant in smartdiary.automaticNegativeThoughts %}
+        <p><span class="red">{{ ant.ant }}</span> -
+            <span class="green">{{ ant.alternativePositiveThought }}</span>
         </p>
-    {% endfor %}
+        {% endfor %}
+    </div>
 
-    <h4>Che sensazioni ho provato?</h4>
-    {% for sensation in smartdiary.sensations %}
-        <p>{{ sensation }} ({{ sensation.strenght }}%)</p>
-    {% endfor %}
+    <div class="ui-body ui-body-a ui-corner-all">
+        <h3>CONSEGUENZE</h3>
+        <h4>Come ho reagito?</h4>
+        <p>{{ smartdiary.behavior }}</p>
+
+        <h4>Che emozioni ho provato?</h4>
+        {% for emotion in smartdiary.emotions %}
+            <p>{{ emotion }}: <span class="red">{{ emotion.strenght }}%</span>
+                - <span class="green">{{ emotion.strenghtRevaluation }}%</span>
+            </p>
+        {% endfor %}
+
+        <h4>Che sensazioni ho provato?</h4>
+        {% for sensation in smartdiary.sensations %}
+            <p>{{ sensation }} ({{ sensation.strenght }}%)</p>
+        {% endfor %}
+    </div>
 {% endblock %}

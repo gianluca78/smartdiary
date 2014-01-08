@@ -28,6 +28,20 @@ class SmartdiaryRepository extends EntityRepository
             ->getResult();
     }
 
+    public function getSmartdiariesByUserProblematicSituationId($userProblematicSituationId)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT s FROM SmartdiarySmartdiaryBundle:Smartdiary s
+                JOIN s.user u
+                WHERE s.userProblematicSituationId = :userProblematicSituationId
+                ORDER BY u.surname, u.name ASC
+                '
+            )
+            ->setParameter('userProblematicSituationId', $userProblematicSituationId)
+            ->getResult();
+    }
+
     public function saveSmartdiaryFromArray(array $data, \Smartdiary\UserBundle\Entity\User $user)
     {
         $antecedentWhere = $this->getEntityManager()

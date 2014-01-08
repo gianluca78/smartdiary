@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Nuova situazione problema{% endblock %}
+{% block page_title %}Nuova situazione problema{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexproblematicsituations') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+{% endblock %}
+
+{% block body %}
+    <div class="description">
+    Descrivere una situazione in cui...
+    </div>
+
+    {{ form(form) }}
+{% endblock %}

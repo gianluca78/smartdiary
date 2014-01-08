@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Insegnante{% endblock %}
+{% block page_title %}Insegnante{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexproblematicsituations') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#" data-icon="grid" data-ajax="false" class="ui-btn-active" >Problemi</a></li>
+            <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexstudents') }}"
+                   data-icon="user" data-ajax="false">Studenti</a>
+            </li>
+            <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexteachersmartdiaries') }}" data-icon="bars" data-ajax="false">Diari</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flash-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="ui-body ui-body-a ui-corner-all">
+        <h3>Il compito di geometria</h3>
+        <p>
+            L’insegnante di matematica ti ha chiamato/a alla lavagna per svolgere un compito di geometria.
+            Per svolgerlo era necessario avere eseguito gli esercizi assegnati per casa.
+            Alla lavagna hai delle esitazioni, non ricordi bene alcuni passaggi e non riesci ad andare avanti.
+            I tuoi compagni iniziano a parlare sottovoce e a ridacchiare.
+            L’insegnante inizialmente ti incoraggia ad andare avanti, ma dopo un po’ si spazientisce e ti manda a posto.
+        </p>
+    </div>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <h3>In palestra</h3>
+        <p>
+            E’ l’ora di educazione fisica e sei in palestra. Dopo il riscaldamento, l’insegnante propone un esercizio da
+            fare in coppia. Ciascuno deve scegliere il compagno con cui svolgere l’esercizio.
+            Tutte le coppie si formano e tu rimani da solo.
+        </p>
+    </div>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <h3>Il corso di nuoto</h3>
+        <p>
+            Ti sei appena iscritto ad un corso di nuoto. Alla prima lezione ti accorgi che gli altri ragazzi sono  più
+            avanti di te. Inoltre noti che tutti hanno accessori per il nuoto (occhialini, cuffia, infradito) di marca
+            mentre tu hai solo un costume che usi per il mare e un telo da bagno. Quando torni a casa lo fai presente ai
+            tuoi genitori che ti rispondono che le marche non sono importanti e che sei lì per fare nuoto.
+        </p>
+    </div>
+    <div class="ui-body ui-body-a ui-corner-all">
+        <h3>Il colloquio con l'insegnante</h3>
+        <p>
+            E’ l’ora della ricreazione e tu sei insieme ai tuoi compagni a chiacchierare.
+            L’insegnante di italiano ti chiama dicendoti che vuole parlarti da solo.
+        </p>
+    </div>
+{% endblock %}

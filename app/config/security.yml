@@ -34,7 +34,7 @@ security:
                 check_path: login_check
                 login_path: login
                 always_use_default_target_path: true
-                default_target_path: smartdiary_smartdiary_smartdiary_new
+                default_target_path: smartdiary_smartdiary_smartdiary_index
             remember_me:
                 key: "%secret%"
                 lifetime: 604800
@@ -49,3 +49,4 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/smartdiary/insegnante/*, roles: ROLE_TEACHER }

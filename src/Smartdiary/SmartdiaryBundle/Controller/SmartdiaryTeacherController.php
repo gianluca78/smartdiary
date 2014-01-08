@@ -11,6 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation;
+
 /**
  * @Route("/smartdiary/insegnante")
  *
@@ -19,6 +21,37 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
  */
 class SmartdiaryTeacherController extends Controller
 {
+
+    /**
+     * @Route("/situazioni-problema/esempi")
+     * @Method({"GET"})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function examplesProblematicSituations()
+    {
+        return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryTeacher:example_user_problematic_situations.html.twig');
+    }
+
+    /**
+     * @Route("/situazioni-problema")
+     * @Method({"GET"})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexProblematicSituationsAction()
+    {
+        $userProblematicSituations = $this->getDoctrine()
+            ->getRepository('SmartdiarySmartdiaryBundle:UserProblematicSituation')
+            ->getUserProblematicSituationsByUserId($this->getUser()->getId());
+
+        return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryTeacher:index_user_problematic_situations.html.twig',
+            array(
+                'userProblematicSituations' => $userProblematicSituations
+            )
+        );
+    }
+
     /**
      * @Route("/diari")
      * @Method({"GET"})
@@ -27,10 +60,6 @@ class SmartdiaryTeacherController extends Controller
      */
     public function indexTeacherSmartdiariesAction()
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_TEACHER')) {
-            throw new AccessDeniedException();
-        }
-
         $smartdiaries = $this->getDoctrine()->getRepository('SmartdiarySmartdiaryBundle:Smartdiary')
             ->getSmartdiaryByUserIdOrderedByCreationDate($this->getUser()->getId());
 
@@ -56,6 +85,64 @@ class SmartdiaryTeacherController extends Controller
 
         return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryTeacher:index_students.html.twig', array(
             'users' => $users
+        ));
+    }
+
+    /**
+     * @Route("/situazione-problema/{slug}/studenti")
+     * @Method({"GET"})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexStudentsProblematicSituation(Request $request, $slug)
+    {
+        $userProblemSituation = $this->getDoctrine()
+            ->getRepository('SmartdiarySmartdiaryBundle:UserProblematicSituation')
+            ->findOneBySlug($slug);
+
+        if (!$userProblemSituation) {
+            throw $this->createNotFoundException(
+                'No problem situation found for slug '.$slug
+            );
+        }
+
+        $smartdiaries = $this->getDoctrine()
+            ->getRepository('SmartdiarySmartdiaryBundle:Smartdiary')
+            ->getSmartdiariesByUserProblematicSituationId($userProblemSituation->getId());
+
+        return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryTeacher:index_students_problematic_situation.html.twig',
+            array(
+                'smartdiaries' => $smartdiaries,
+                'problemSituation' => $userProblemSituation
+            )
+        );
+    }
+
+    /**
+     * @Route("/situazione-problema/nuovo")
+     * @Method({"GET", "POST"})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newProblematicSituationAction(Request $request)
+    {
+        $userProblematicSituation = new UserProblematicSituation();
+        $form = $this->createForm('user_problematic_situation', $userProblematicSituation, array(
+                'action' => $this->generateUrl('smartdiary_smartdiary_smartdiaryteacher_newproblematicsituation'),
+                'attr' => array('data-ajax' => 'false')
+            )
+        );
+
+        $form->get('userId')->setData($this->getUser()->getId());
+
+        $formHandler = $this->get('smartdiary.create_user_problematic_situation_form_handler');
+
+        if($formHandler->handle($form, $request)) {
+            return $this->redirect($this->generateUrl('smartdiary_smartdiary_smartdiaryteacher_indexproblematicsituations'));
+        }
+
+        return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryTeacher:new_problematic_situation.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 }

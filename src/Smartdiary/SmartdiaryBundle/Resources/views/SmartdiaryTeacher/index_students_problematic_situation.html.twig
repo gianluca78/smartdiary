@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary - Insegnante{% endblock %}
+{% block page_title %}Insegnante{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexproblematicsituations') }}"
+       data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#" data-icon="grid" data-ajax="false" class="ui-btn-active" >Problemi</a></li>
+            <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexstudents') }}"
+                   data-icon="user" data-ajax="false">Studenti</a>
+            </li>
+            <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexteachersmartdiaries') }}" data-icon="bars" data-ajax="false">Diari</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <h2>{{ problemSituation.title }}</h2>
+    <p>{{ problemSituation.description }}</p>
+
+    <ul data-role="listview">
+        {% for smartdiary in smartdiaries %}
+        <li><a href="{{ path('smartdiary_smartdiary_smartdiary_view', { 'id': smartdiary.id }) }}"
+               data-ajax="false">{{ smartdiary.user.surname }} {{ smartdiary.user.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

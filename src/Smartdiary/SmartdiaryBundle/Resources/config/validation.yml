@@ -147,3 +147,25 @@ Smartdiary\SmartdiaryBundle\Entity\SmartdiarySensation:
                 minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
                 maxMessage: "Il campo non può superare {{ limit }} caratteri."
                 groups: [emotion-revaluation]
+Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation:
+    properties:
+        userId:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: numeric
+        title:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string
+            - Length:
+                min: 3
+                max: 50
+                minMessage: "Il campo deve contenere almeno {{ limit }} caratteri."
+                maxMessage: "Il campo non può superare {{ limit }} caratteri."
+        description:
+            - NotBlank:
+                message: Campo obbligatorio
+            - Type:
+                type: string

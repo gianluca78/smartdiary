@@ -28,12 +28,12 @@ class SmartdiaryController extends Controller
     {
         if($this->get('security.context')->isGranted('ROLE_TEACHER'))
         {
-            $this->forward($this->indexTeacherAction());
+            return $this->forward('SmartdiarySmartdiaryBundle:SmartdiaryTeacher:indexProblematicSituations');
         }
 
-        if($this->get('security.context')->isGranted('ROLE_TEACHER'))
+        if($this->get('security.context')->isGranted('ROLE_STUDENT'))
         {
-            $this->forward($this->indexStudentAction());
+            //$this->forward($this->indexStudentAction());
         }
 
     }
@@ -46,7 +46,9 @@ class SmartdiaryController extends Controller
      */
     public function newAction()
     {
-        return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:new.html.twig');
+        $referrer = $this->get('request')->server->get('HTTP_REFERER');
+
+        return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:new.html.twig', array('referrer' => $referrer));
     }
 
     /**
@@ -81,8 +83,11 @@ class SmartdiaryController extends Controller
     {
         $smartdiary = $this->getDoctrine()->getRepository('SmartdiarySmartdiaryBundle:Smartdiary')->find($id);
 
+        $referrer = $this->get('request')->server->get('HTTP_REFERER');
+
         return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:view.html.twig', array(
-            'smartdiary' => $smartdiary
+            'smartdiary' => $smartdiary,
+            'referrer' => $referrer
         ));
     }
 }

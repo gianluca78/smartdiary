@@ -141,17 +141,16 @@ class Smartdiary
     private $sensations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserProblematicSituation", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="UserProblematicSituation", inversedBy="smartdiaries")
      * @ORM\JoinColumn(name="user_problematic_situation_id", referencedColumnName="id")
      */
-    private $userProblematicSituations;
+    private $smartdiaryProblematicSituation;
 
     public function __construct()
     {
         $this->automaticNegativeThoughts = new ArrayCollection();
         $this->emotions = new ArrayCollection();
         $this->sensations = new ArrayCollection();
-        $this->userProblematicSituations = new ArrayCollection();
     }
 
     /**
@@ -586,25 +585,25 @@ class Smartdiary
     }
 
     /**
-     * Set userProblematicSituations
+     * Set smartdiaryProblematicSituation
      *
-     * @param \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $userProblematicSituations
+     * @param \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $smartdiaryProblematicSituation
      * @return Smartdiary
      */
-    public function setUserProblematicSituations(\Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $userProblematicSituations = null)
+    public function setSmartdiaryProblematicSituation(\Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation $smartdiaryProblematicSituation = null)
     {
-        $this->userProblematicSituations = $userProblematicSituations;
+        $this->smartdiaryProblematicSituation = $smartdiaryProblematicSituation;
 
         return $this;
     }
 
     /**
-     * Get userProblematicSituations
+     * Get smartdiaryProblematicSituation
      *
      * @return \Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation 
      */
-    public function getUserProblematicSituations()
+    public function getSmartdiaryProblematicSituation()
     {
-        return $this->userProblematicSituations;
+        return $this->smartdiaryProblematicSituation;
     }
 }

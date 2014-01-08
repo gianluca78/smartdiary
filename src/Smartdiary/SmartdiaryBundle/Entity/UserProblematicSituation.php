@@ -2,7 +2,8 @@
 
 namespace Smartdiary\SmartdiaryBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM,
+    Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
@@ -66,9 +67,19 @@ class UserProblematicSituation
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Smartdiary", mappedBy="smartdiaryProblematicSituation")
+     */
+    private $smartdiaries;
+
     public function __toString()
     {
         return $this->title;
+    }
+
+    public function __construct()
+    {
+        $this->smartdiaries = new ArrayCollection();
     }
 
     /**
@@ -220,25 +231,35 @@ class UserProblematicSituation
     }
 
     /**
-     * Set smartdiary
+     * Add smartdiaries
      *
-     * @param \Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiary
+     * @param \Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiaries
      * @return UserProblematicSituation
      */
-    public function setSmartdiary(\Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiary = null)
+    public function addSmartdiary(\Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiaries)
     {
-        $this->smartdiary = $smartdiary;
+        $this->smartdiaries[] = $smartdiaries;
 
         return $this;
     }
 
     /**
-     * Get smartdiary
+     * Remove smartdiaries
      *
-     * @return \Smartdiary\SmartdiaryBundle\Entity\Smartdiary 
+     * @param \Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiaries
      */
-    public function getSmartdiary()
+    public function removeSmartdiary(\Smartdiary\SmartdiaryBundle\Entity\Smartdiary $smartdiaries)
     {
-        return $this->smartdiary;
+        $this->smartdiaries->removeElement($smartdiaries);
+    }
+
+    /**
+     * Get smartdiaries
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSmartdiaries()
+    {
+        return $this->smartdiaries;
     }
 }
