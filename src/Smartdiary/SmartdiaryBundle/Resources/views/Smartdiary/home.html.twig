@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Smartdiary{% endblock %}
+{% block page_title %}Smartdiary{% endblock %}
+
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_user_user_new') }}" data-icon="check" data-direction="reverse" data-ajax="false">Registrazione</a>
+    <a href="{{ path('login') }}" data-icon="lock" data-direction="reverse" data-ajax="false">Entra</a>
+{% endblock %}
+
+{% block body %}
+    <p>SMART Diary è un diario sul quale annotare i tuoi pensieri, emozioni, comportamenti e sensazioni che si riferiscono
+        ad una situazione che hai vissuto e che ti ha procurato disagio.</p>
+    <p>Utilizzare il diario ti aiuta a diventare più consapevole del tuo modo di essere e a gestire meglio le situazioni
+        difficili.</p>
+
+{% endblock %}

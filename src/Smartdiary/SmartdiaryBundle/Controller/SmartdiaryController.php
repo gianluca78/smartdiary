@@ -20,6 +20,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
 class SmartdiaryController extends Controller
 {
     /**
+     * @Route("/home")
+     * @Method({"GET"})
+     *
+     */
+    public function homeAction()
+    {
+        return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:home.html.twig');
+    }
+
+    /**
      * @Route("/")
      * @Method({"GET"})
      *

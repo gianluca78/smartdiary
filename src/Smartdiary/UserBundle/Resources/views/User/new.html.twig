@@ -6,7 +6,7 @@
 {% block page_title %}Registrazione utente{% endblock %}
 
 {% block header_buttons %}
-    <a href="#" data-role="button" data-icon="home" data-ajax="false">Home</a>
+    <a href="{{ path('smartdiary_smartdiary_smartdiary_home') }}" data-role="button" data-icon="home" data-ajax="false">Home</a>
 {% endblock %}
 
 {% block javascripts %}
@@ -20,8 +20,5 @@
         </div>
     {% endfor %}
 
-    <div class="description">
-    I campi contrassegnati da un * sono obbligatori.
-    </div>
     {{ form(form) }}
 {% endblock %}

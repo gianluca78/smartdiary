@@ -22,6 +22,12 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        home:
+            pattern: ^/smartdiary/home
+            anonymous: ~
+        index:
+            pattern: ^/
+            anonymous: ~
         login:
             pattern:  ^/login$
             anonymous: ~
@@ -42,7 +48,7 @@ security:
                 domain:   ~
             logout:
                 path:   logout
-                target: /
+                target: smartdiary_smartdiary_smartdiary_home
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"

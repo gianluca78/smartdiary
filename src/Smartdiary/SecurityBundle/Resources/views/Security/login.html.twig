@@ -3,6 +3,10 @@
 {% block title %}Smartdiary - Login{% endblock %}
 {% block page_title %}Login{% endblock %}
 
+{% block header_buttons %}
+    <a href="{{ path('smartdiary_smartdiary_smartdiary_home') }}" data-role="button" data-icon="home" data-ajax="false">Home</a>
+{% endblock %}
+
 {% block body %}
     {% if error %}
         <div>{{ error.message|trans }}</div>

@@ -25,6 +25,8 @@
         <div data-role="footer">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <a href="{{ path('logout') }}" data-icon="power" data-direction="reverse" data-ajax="false">Esci</a>
+            {% else %}
+                <h3>Progetto Edutainment 2012 - {{"now"|date('Y')}}</h3>
             {% endif %}
         </div>
     </div>

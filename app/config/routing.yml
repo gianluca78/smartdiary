@@ -1,3 +1,6 @@
+home:
+    path: /
+    defaults:  { _controller: SmartdiarySmartdiaryBundle:Smartdiary:home }
 login:
     path:   /login
     defaults:  { _controller: SmartdiarySecurityBundle:Security:login }
