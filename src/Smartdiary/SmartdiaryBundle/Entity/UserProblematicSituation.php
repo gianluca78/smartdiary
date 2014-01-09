@@ -68,6 +68,12 @@ class UserProblematicSituation
     private $updatedAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="\Smartdiary\UserBundle\Entity\User", inversedBy="userProblematicSituations")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
+
+    /**
      * @ORM\OneToMany(targetEntity="Smartdiary", mappedBy="smartdiaryUserProblematicSituation")
      */
     private $smartdiaries;
@@ -261,5 +267,28 @@ class UserProblematicSituation
     public function getSmartdiaries()
     {
         return $this->smartdiaries;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Smartdiary\UserBundle\Entity\User $user
+     * @return UserProblematicSituation
+     */
+    public function setUser(\Smartdiary\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Smartdiary\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

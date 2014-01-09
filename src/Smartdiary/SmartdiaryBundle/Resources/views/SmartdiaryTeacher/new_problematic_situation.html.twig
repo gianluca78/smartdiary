@@ -6,11 +6,16 @@
 {% block header_buttons %}
     <a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexproblematicsituations') }}"
        data-icon="arrow-l" data-direction="reverse" data-ajax="false">Indietro</a>
+
+    <a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_examplesproblematicsituations') }}" data-icon="info" data-ajax="false">
+        Esempi
+    </a>
 {% endblock %}
 
 {% block body %}
     <div class="description">
-    Descrivere una situazione in cui...
+    Descrivere brevemente una situazione spiacevole o un evento che potrebbe suscitare emozioni e pensieri negativi
+    nei tuoi studenti.
     </div>
 
     {{ form(form) }}

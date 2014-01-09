@@ -137,11 +137,9 @@ class SmartdiaryTeacherController extends Controller
             )
         );
 
-        $form->get('userId')->setData($this->getUser()->getId());
-
         $formHandler = $this->get('smartdiary.create_user_problematic_situation_form_handler');
 
-        if($formHandler->handle($form, $request)) {
+        if($formHandler->handle($form, $request, $this->getUser())) {
             return $this->redirect($this->generateUrl('smartdiary_smartdiary_smartdiaryteacher_indexproblematicsituations'));
         }
 

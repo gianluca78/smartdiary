@@ -8,10 +8,6 @@
         Problema
     </a>
 
-    <a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_examplesproblematicsituations') }}" data-icon="info" data-ajax="false">
-        Esempi
-    </a>
-
     <div data-role="navbar">
         <ul>
             <li><a href="#" data-icon="grid" data-ajax="false" class="ui-btn-active" >Problemi</a></li>
@@ -32,9 +28,10 @@
 
     <ul data-role="listview">
         {% for userProblematicSituation in userProblematicSituations %}
-        <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexstudentsproblematicsituation', { 'slug' : userProblematicSituation.slug }) }}"
-               data-ajax="false">{{ userProblematicSituation.title }}
-                <span class="ui-li-count">{{ userProblematicSituation.smartdiaries.count }}</span>
+        <li><a href="{{ path('smartdiary_smartdiary_smartdiaryteacher_indexstudentsproblematicsituation',
+            { 'slug' : userProblematicSituation.slug }) }}" data-ajax="false">
+                {{ userProblematicSituation.title }}
+                <span class="ui-li-count">{{ userProblematicSituation.smartdiaries|length }}</span>
             </a>
         </li>
         {% endfor %}

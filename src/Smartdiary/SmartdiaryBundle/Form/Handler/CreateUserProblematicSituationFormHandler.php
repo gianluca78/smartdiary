@@ -7,7 +7,8 @@ use Symfony\Component\HttpFoundation\Request,
 
 use Doctrine\ORM\EntityManager;
 
-use Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation;
+use Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation,
+    Smartdiary\UserBundle\Entity\User;
 
 class CreateUserProblematicSituationFormHandler {
 
@@ -23,7 +24,7 @@ class CreateUserProblematicSituationFormHandler {
         $this->session = $session;
     }
 
-    public function handle(FormInterface $form, Request $request)
+    public function handle(FormInterface $form, Request $request, User $user)
     {
         if(!$request->isMethod('POST')) {
             return false;
@@ -36,13 +37,16 @@ class CreateUserProblematicSituationFormHandler {
         }
 
         $validUserProblematicSituation = $form->getData();
-        $this->createUserProblematicSituation($validUserProblematicSituation);
+
+        $this->createUserProblematicSituation($validUserProblematicSituation, $user);
 
         return true;
     }
 
-    public function createUserProblematicSituation(UserProblematicSituation $userProblematicSituation)
+    public function createUserProblematicSituation(UserProblematicSituation $userProblematicSituation, User $user)
     {
+        $userProblematicSituation->setUser($user);
+
         $this->entityManager->persist($userProblematicSituation);
         $this->entityManager->flush();
 

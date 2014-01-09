@@ -149,11 +149,6 @@ Smartdiary\SmartdiaryBundle\Entity\SmartdiarySensation:
                 groups: [emotion-revaluation]
 Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituation:
     properties:
-        userId:
-            - NotBlank:
-                message: Campo obbligatorio
-            - Type:
-                type: numeric
         title:
             - NotBlank:
                 message: Campo obbligatorio

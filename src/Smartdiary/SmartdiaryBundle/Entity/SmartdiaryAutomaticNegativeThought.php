@@ -61,13 +61,13 @@ class SmartdiaryAutomaticNegativeThought
     /**
      * @var SmartdiaryAlternativePositiveThought $alternativePositiveThought
      *
-     * @ORM\OneToOne(targetEntity="SmartdiaryAlternativePositiveThought", mappedBy="smartdiary_automatic_negative_thought")
+     * @ORM\OneToOne(targetEntity="SmartdiaryAlternativePositiveThought")
      * @ORM\JoinColumn(name="smartdiary_alternative_positive_thought_id", referencedColumnName="id")
      **/
     private $alternativePositiveThought;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="smartdiary_automatic_negative_thought")
+     * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="automaticNegativeThoughts")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */
     private $smartdiary;

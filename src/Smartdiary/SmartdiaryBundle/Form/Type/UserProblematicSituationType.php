@@ -17,7 +17,6 @@ class UserProblematicSituationType extends AbstractType
                 'label' => 'Descrizione situazione problema',
                 )
             )
-            ->add('userId', 'hidden')
             ->add('Salva', 'submit');
     }
 

@@ -51,7 +51,7 @@ class SmartdiarySensation
     private $sensation;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="smartdiary_sensation")
+     * @ORM\ManyToOne(targetEntity="Smartdiary", inversedBy="sensations")
      * @ORM\JoinColumn(name="smartdiary_id", referencedColumnName="id")
      */
     private $smartdiary;

@@ -146,6 +146,11 @@ class Smartdiary
      */
     private $smartdiaryUserProblematicSituation;
 
+    /**
+     * @ORM\OneToMany(targetEntity="SmartdiaryAlternativePositiveThought", mappedBy="smartdiary")
+     */
+    private $smartdiaryAlternativePositiveThoughts;
+
     public function __construct()
     {
         $this->automaticNegativeThoughts = new ArrayCollection();
@@ -605,5 +610,38 @@ class Smartdiary
     public function getSmartdiaryUserProblematicSituation()
     {
         return $this->smartdiaryUserProblematicSituation;
+    }
+
+    /**
+     * Add smartdiaryAlternativePositiveThoughts
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThought $smartdiaryAlternativePositiveThoughts
+     * @return Smartdiary
+     */
+    public function addSmartdiaryAlternativePositiveThought(\Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThought $smartdiaryAlternativePositiveThoughts)
+    {
+        $this->smartdiaryAlternativePositiveThoughts[] = $smartdiaryAlternativePositiveThoughts;
+
+        return $this;
+    }
+
+    /**
+     * Remove smartdiaryAlternativePositiveThoughts
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThought $smartdiaryAlternativePositiveThoughts
+     */
+    public function removeSmartdiaryAlternativePositiveThought(\Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThought $smartdiaryAlternativePositiveThoughts)
+    {
+        $this->smartdiaryAlternativePositiveThoughts->removeElement($smartdiaryAlternativePositiveThoughts);
+    }
+
+    /**
+     * Get smartdiaryAlternativePositiveThoughts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSmartdiaryAlternativePositiveThoughts()
+    {
+        return $this->smartdiaryAlternativePositiveThoughts;
     }
 }
