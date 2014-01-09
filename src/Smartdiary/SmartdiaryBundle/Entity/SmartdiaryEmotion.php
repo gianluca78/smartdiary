@@ -4,13 +4,11 @@ namespace Smartdiary\SmartdiaryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Security\Core\User\UserInterface,
-    Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Smartdiary\SmartdiaryBundle\Entity\SmartdiaryEmotion
  *
- * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryEmotionRepository")
+ * @ORM\Entity
  * @ORM\Table(name="smartdiary_emotion")
  */
 class SmartdiaryEmotion

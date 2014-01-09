@@ -70,11 +70,12 @@ class SmartdiaryStudentController extends Controller
             );
 
         $request->getSession()->set('smartdiary_redirect_url', $this->generateUrl(
-            'smartdiary_smartdiary_smartdiarystudent_indexproblematicsituationsmartdiaries',
-            array(
+            'smartdiary_smartdiary_smartdiarystudent_indexproblematicsituationsmartdiaries', array(
                 'slug' => $userProblemSituation->getSlug()
             ))
         );
+
+        $request->getSession()->set('userProblematicSituationId', $userProblemSituation->getId());
 
         return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryStudent:index_problematic_situation_smartdiaries.html.twig',
             array(
@@ -98,6 +99,8 @@ class SmartdiaryStudentController extends Controller
         $request->getSession()->set('smartdiary_redirect_url', $this->generateUrl(
                 'smartdiary_smartdiary_smartdiarystudent_indexstudentsmartdiaries')
         );
+
+        $request->getSession()->set('userProblematicSituationId', null);
 
         return $this->render('SmartdiarySmartdiaryBundle:SmartdiaryStudent:index_smartdiaries.html.twig', array(
             'smartdiaries' => $smartdiaries

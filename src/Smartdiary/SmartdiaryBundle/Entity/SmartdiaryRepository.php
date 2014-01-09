@@ -21,6 +21,7 @@ class SmartdiaryRepository extends EntityRepository
             ->createQuery(
                 'SELECT s FROM SmartdiarySmartdiaryBundle:Smartdiary s
                 WHERE s.userId = :userId
+                AND s.userProblematicSituationId IS NULL
                 ORDER BY s.createdAt DESC
                 '
             )

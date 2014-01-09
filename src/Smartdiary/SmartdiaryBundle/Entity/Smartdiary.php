@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Smartdiary\SmartdiaryBundle\Entity\Smartdiary
  *
- * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryRepository")
+ * @ORM\Entity(repositoryClass="SmartdiaryRepository")
  * @ORM\Table(name="smartdiary")
  */
 class Smartdiary
@@ -468,39 +468,6 @@ class Smartdiary
     }
 
     /**
-     * Add automaticNegativeThoughts
-     *
-     * @param \Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought $automaticNegativeThoughts
-     * @return Smartdiary
-     */
-    public function addAutomaticNegativeThought(\Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought $automaticNegativeThoughts)
-    {
-        $this->automaticNegativeThoughts[] = $automaticNegativeThoughts;
-
-        return $this;
-    }
-
-    /**
-     * Remove automaticNegativeThoughts
-     *
-     * @param \Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought $automaticNegativeThoughts
-     */
-    public function removeAutomaticNegativeThought(\Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought $automaticNegativeThoughts)
-    {
-        $this->automaticNegativeThoughts->removeElement($automaticNegativeThoughts);
-    }
-
-    /**
-     * Get automaticNegativeThoughts
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAutomaticNegativeThoughts()
-    {
-        return $this->automaticNegativeThoughts;
-    }
-
-    /**
      * Add emotions
      *
      * @param \Smartdiary\SmartdiaryBundle\Entity\Emotion $emotions
@@ -643,5 +610,38 @@ class Smartdiary
     public function getSmartdiaryAlternativePositiveThoughts()
     {
         return $this->smartdiaryAlternativePositiveThoughts;
+    }
+
+    /**
+     * Add automaticNegativeThoughts
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAutomaticNegativeThought $automaticNegativeThoughts
+     * @return Smartdiary
+     */
+    public function addAutomaticNegativeThought(\Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAutomaticNegativeThought $automaticNegativeThoughts)
+    {
+        $this->automaticNegativeThoughts[] = $automaticNegativeThoughts;
+
+        return $this;
+    }
+
+    /**
+     * Remove automaticNegativeThoughts
+     *
+     * @param \Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAutomaticNegativeThought $automaticNegativeThoughts
+     */
+    public function removeAutomaticNegativeThought(\Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAutomaticNegativeThought $automaticNegativeThoughts)
+    {
+        $this->automaticNegativeThoughts->removeElement($automaticNegativeThoughts);
+    }
+
+    /**
+     * Get automaticNegativeThoughts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAutomaticNegativeThoughts()
+    {
+        return $this->automaticNegativeThoughts;
     }
 }

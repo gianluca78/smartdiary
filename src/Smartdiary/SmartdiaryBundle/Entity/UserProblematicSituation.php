@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Smartdiary\SmartdiaryBundle\Entity\TeacherProblem
  *
- * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\UserProblematicSituationRepository")
+ * @ORM\Entity(repositoryClass="UserProblematicSituationRepository")
  * @ORM\Table(name="user_problematic_situation")
  */
 class UserProblematicSituation

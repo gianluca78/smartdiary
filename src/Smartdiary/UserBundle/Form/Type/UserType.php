@@ -52,7 +52,7 @@ class UserType extends AbstractType
                 'required' => false,
                 'attr' => array(
                     'placeholder' => 'Inserire l\'email di un docente già iscritto a Smartdiary'
-                )
+                ),
             ))
             ->add('school', null, array(
                 'label' => 'Scuola'

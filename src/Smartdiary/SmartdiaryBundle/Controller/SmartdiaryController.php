@@ -38,30 +38,13 @@ class SmartdiaryController extends Controller
     }
 
     /**
-     * @Route("/nuovo/{slugProblematicSituation}")
+     * @Route("/nuovo")
      * @Method({"GET"})
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction(Request $request, $slugProblematicSituation=null)
+    public function newAction(Request $request)
     {
-        if($slugProblematicSituation) {
-            $userProblemSituation = $this->getDoctrine()
-                ->getRepository('SmartdiarySmartdiaryBundle:UserProblematicSituation')
-                ->findOneBySlug($slugProblematicSituation);
-
-            if (!$userProblemSituation) {
-                throw $this->createNotFoundException(
-                    'No problem situation found for slug '.$slugProblematicSituation
-                );
-            }
-
-            $request->getSession()->set('userProblematicSituationId', $userProblemSituation->getId());
-        }
-        else {
-            $request->getSession()->set('userProblematicSituationId', null);
-        }
-
         $backUrl = $request->getSession()->get('smartdiary_redirect_url');
 
         return $this->render('SmartdiarySmartdiaryBundle:Smartdiary:new.html.twig', array('backUrl' => $backUrl));

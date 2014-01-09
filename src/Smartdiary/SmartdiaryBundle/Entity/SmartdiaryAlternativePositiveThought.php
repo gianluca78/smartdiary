@@ -4,13 +4,11 @@ namespace Smartdiary\SmartdiaryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Security\Core\User\UserInterface,
-    Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought
  *
- * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAlternativePositiveThoughtRepository")
+ * @ORM\Entity
  * @ORM\Table(name="smartdiary_alternative_positive_thought")
  */
 class SmartdiaryAlternativePositiveThought

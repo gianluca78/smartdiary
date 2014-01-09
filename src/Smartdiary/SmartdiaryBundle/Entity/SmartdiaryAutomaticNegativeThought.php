@@ -4,13 +4,11 @@ namespace Smartdiary\SmartdiaryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Security\Core\User\UserInterface,
-    Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Smartdiary\SmartdiaryBundle\Entity\AutomaticNegativeThought
  *
- * @ORM\Entity(repositoryClass="Smartdiary\SmartdiaryBundle\Entity\SmartdiaryAutomaticNegativeThoughtRepository")
+ * @ORM\Entity
  * @ORM\Table(name="smartdiary_automatic_negative_thought")
  */
 class SmartdiaryAutomaticNegativeThought
@@ -107,10 +105,10 @@ class SmartdiaryAutomaticNegativeThought
     /**
      * Set smartdiaryId
      *
-     * @param \int $smartdiaryId
+     * @param $smartdiaryId
      * @return AutomaticNegativeThought
      */
-    public function setSmartdiaryId(\int $smartdiaryId)
+    public function setSmartdiaryId($smartdiaryId)
     {
         $this->smartdiaryId = $smartdiaryId;
 
@@ -120,7 +118,7 @@ class SmartdiaryAutomaticNegativeThought
     /**
      * Get smartdiaryId
      *
-     * @return \int 
+     * @return int
      */
     public function getSmartdiaryId()
     {

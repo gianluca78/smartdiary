@@ -9,6 +9,10 @@
     <a href="#" data-role="button" data-icon="home" data-ajax="false">Home</a>
 {% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('bundles/smartdiaryuser/js/registration.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('success') %}
         <div class="flash-success">
