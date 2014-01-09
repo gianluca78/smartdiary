@@ -1,27 +1,42 @@
 <?php
 namespace Smartdiary\UserBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Smartdiary\UserBundle\Entity\Role;
 
-class LoadUserData implements FixtureInterface
+class LoadRoleData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager)
     {
-        $roleProject = new Role();
-        $roleProject->setRole('ROLE_TEACHER');
-        $roleProject->setDescription('Insegnante');
-        $manager->persist($roleProject);
+        $roleTeacher = new Role();
+        $roleTeacher->setRole('ROLE_TEACHER');
+        $roleTeacher->setDescription('Insegnante');
+        $manager->persist($roleTeacher);
         $manager->flush();
 
-        $roleManagement = new Role();
-        $roleManagement->setRole('ROLE_STUDENT');
-        $roleManagement->setDescription('Studente');
-        $manager->persist($roleManagement);
+        $this->addReference('role-teacher', $roleTeacher);
+
+        $roleStudent = new Role();
+        $roleStudent->setRole('ROLE_STUDENT');
+        $roleStudent->setDescription('Studente');
+        $manager->persist($roleStudent);
         $manager->flush();
+
+        $this->addReference('role-student', $roleStudent);
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    function getOrder()
+    {
+        return 1;
     }
 }

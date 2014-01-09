@@ -11,7 +11,7 @@ class EmotionRevaluationType extends AbstractType
     {
         $builder->setAction($options['action'])
             ->add('strenghtRevaluation', null, array(
-                'label' => 'Intensità',
+                'label' => 'Intensità (0-100)',
                 'attr' => array(
                     'value' => 0
                 ),

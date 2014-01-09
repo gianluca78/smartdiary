@@ -8,7 +8,7 @@ $( "#user_role" ).change(function() {
 
 function hideShowTeacherEmail()
 {
-    if($( "#user_role").val()==3) {
+    if($( "#user_role").val()==1) {
         $("#user_teacher_email").parent().parent().hide();
     }
     else {

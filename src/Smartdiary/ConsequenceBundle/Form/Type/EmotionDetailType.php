@@ -14,7 +14,7 @@ class EmotionDetailType extends AbstractType
                 'mapped' => false
             ))
             ->add('strenght', null, array(
-                'label' => 'Intensità',
+                'label' => 'Intensità (0-100)',
                 'attr' => array(
                     'value' => 0
                 ),

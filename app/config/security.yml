@@ -26,7 +26,7 @@ security:
             pattern: ^/smartdiary/home
             anonymous: ~
         index:
-            pattern: ^/
+            pattern: ^/$
             anonymous: ~
         login:
             pattern:  ^/login$
