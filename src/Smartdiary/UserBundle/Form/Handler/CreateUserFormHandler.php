@@ -14,6 +14,7 @@ class CreateUserFormHandler {
 
     private $entityManager;
     private $encoderFactory;
+    private $session;
 
     public function __construct(
         EntityManager $entityManager,

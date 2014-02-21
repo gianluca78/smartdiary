@@ -13,42 +13,42 @@ class LoadSensationData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $sensation = new Sensation();
-        $sensation->setLabel('Astenia (spossatezza e mancanza di forze)');
+        $sensation->setLabel('Spossatezza e/o mancanza di forze');
         $manager->persist($sensation);
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Brividi o vampate di calore');
+        $sensation->setLabel('Brividi');
         $manager->persist($sensation);
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Debolezza');
+        $sensation->setLabel('Rossore o sensazione di calore');
         $manager->persist($sensation);
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Dispnea (fame d\'aria o mancanza d\'aria)');
+        $sensation->setLabel('Mancanza d\'aria');
         $manager->persist($sensation);
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Dolore al petto');
+        $sensation->setLabel('Senso di costrizione o pesantezza al torace');
         $manager->persist($sensation);
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Dolori lombari');
+        $sensation->setLabel('Dolore');
         $manager->persist($sensation);
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Emicrania');
+        $sensation->setLabel('Mal di testa');
         $manager->persist($sensation);
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Eruzioni cutanee/orticaria/prurito');
+        $sensation->setLabel('Eruzioni cutanee/prurito');
         $manager->persist($sensation);
         $manager->flush();
 
@@ -58,7 +58,7 @@ class LoadSensationData implements FixtureInterface
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Intorpidimento');
+        $sensation->setLabel('Formicolii agli arti');
         $manager->persist($sensation);
         $manager->flush();
 
@@ -73,12 +73,7 @@ class LoadSensationData implements FixtureInterface
         $manager->flush();
 
         $sensation = new Sensation();
-        $sensation->setLabel('Palpitazioni');
-        $manager->persist($sensation);
-        $manager->flush();
-
-        $sensation = new Sensation();
-        $sensation->setLabel('Parestesie (torpore e formicolii)');
+        $sensation->setLabel('Cuore che batte forte');
         $manager->persist($sensation);
         $manager->flush();
 
@@ -106,12 +101,5 @@ class LoadSensationData implements FixtureInterface
         $sensation->setLabel('Vista annebbiata');
         $manager->persist($sensation);
         $manager->flush();
-
-        $sensation = new Sensation();
-        $sensation->setLabel('Altro');
-        $manager->persist($sensation);
-        $manager->flush();
-
-
     }
 }
