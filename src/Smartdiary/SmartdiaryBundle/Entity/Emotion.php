@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Smartdiary\SmartdiaryBundle\Entity\Emotion
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SmartdiaryEmotionRepository")
  * @ORM\Table(name="emotion")
  */
 class Emotion
@@ -26,6 +26,13 @@ class Emotion
      * @ORM\Column(name="label", type="string", length=255)
      */
     private $label;
+
+    /**
+     * @var string $label
+     *
+     * @ORM\Column(name="is_positive", type="boolean")
+     */
+    private $isPositive;
 
     /**
      * @var string $slug
@@ -157,5 +164,28 @@ class Emotion
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set isPositive
+     *
+     * @param boolean $isPositive
+     * @return Emotion
+     */
+    public function setIsPositive($isPositive)
+    {
+        $this->isPositive = $isPositive;
+
+        return $this;
+    }
+
+    /**
+     * Get isPositive
+     *
+     * @return boolean 
+     */
+    public function getIsPositive()
+    {
+        return $this->isPositive;
     }
 }

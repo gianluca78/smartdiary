@@ -10,13 +10,24 @@
 
 {% block body %}
     <ul data-role="listview">
-        {% for element in emotionList %}
-        <li><a href="{{ path('smartdiary_consequence_emotion_newemotionstrenght',
-            { 'slug' : element.slug }
-            ) }}" data-ajax="false">
-            <h3>{{ element.label }}</h3>
-            </a>
-        </li>
-        {% endfor %}
+        {% if emotionList is defined %}
+            {% for element in emotionList %}
+            <li><a href="{{ path('smartdiary_consequence_emotion_newemotionstrenght',
+                { 'slug' : element.slug }
+                ) }}" data-ajax="false">
+                <h3>{{ element.label }}</h3>
+                </a>
+            </li>
+            {% endfor %}
+        {% else %}
+            <li><a href="{{ path('smartdiary_consequence_emotion_newpositiveemotionlist') }}" data-ajax="false">
+                    <h3>Emozioni positive</h3>
+                </a>
+            </li>
+            <li><a href="{{ path('smartdiary_consequence_emotion_newnegativeemotionlist') }}" data-ajax="false">
+                    <h3>Emozioni positive</h3>
+                </a>
+            </li>
+        {% endif %}
     </ul>
 {% endblock %}

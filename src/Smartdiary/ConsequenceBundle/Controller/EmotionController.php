@@ -83,8 +83,35 @@ class EmotionController extends Controller
      */
     public function newEmotionListAction()
     {
+        return $this->render('SmartdiaryConsequenceBundle:Emotion:new_emotion_list.html.twig');
+    }
+
+    /**
+     * @Route("/negative/nuovo")
+     * @Method({"GET"})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newNegativeEmotionList()
+    {
         $em = $this->getDoctrine()->getManager();
-        $emotionList = $em->getRepository('SmartdiarySmartdiaryBundle:Emotion')->findAll();
+        $emotionList = $em->getRepository('SmartdiarySmartdiaryBundle:Emotion')->findNegativeEmotionsOrderByLabel();
+
+        return $this->render('SmartdiaryConsequenceBundle:Emotion:new_emotion_list.html.twig', array(
+            'emotionList' => $emotionList
+        ));
+    }
+
+    /**
+     * @Route("/positive/nuovo")
+     * @Method({"GET"})
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newPositiveEmotionList()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $emotionList = $em->getRepository('SmartdiarySmartdiaryBundle:Emotion')->findPositiveEmotionsOrderByLabel();
 
         return $this->render('SmartdiaryConsequenceBundle:Emotion:new_emotion_list.html.twig', array(
             'emotionList' => $emotionList
