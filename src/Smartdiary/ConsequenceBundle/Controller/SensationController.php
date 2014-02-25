@@ -84,7 +84,7 @@ class SensationController extends Controller
     public function newSensationListAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $sensationList = $em->getRepository('SmartdiarySmartdiaryBundle:Sensation')->findAll();
+        $sensationList = $em->getRepository('SmartdiarySmartdiaryBundle:Sensation')->findSensationsOrderedByLabel();
 
         return $this->render('SmartdiaryConsequenceBundle:Sensation:new_sensation_list.html.twig', array(
             'sensationList' => $sensationList

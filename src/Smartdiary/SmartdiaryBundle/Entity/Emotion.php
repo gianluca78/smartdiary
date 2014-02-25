@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Smartdiary\SmartdiaryBundle\Entity\Emotion
  *
- * @ORM\Entity(repositoryClass="SmartdiaryEmotionRepository")
+ * @ORM\Entity(repositoryClass="EmotionRepository")
  * @ORM\Table(name="emotion")
  */
 class Emotion
